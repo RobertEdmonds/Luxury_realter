@@ -1,0 +1,12 @@
+.styleImage{
+    margin-left: 5rem;
+    margin-top: .5rem;
+    position: relative;
+}
+
+.styleHeader{
+    background-color:  rgb(222, 218, 218);
+    position: fixed;
+    width: 130rem;
+    opacity: .9;
+}

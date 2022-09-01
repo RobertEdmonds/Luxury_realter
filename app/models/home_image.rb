@@ -1,0 +1,2 @@
+class HomeImage < ApplicationRecord
+end

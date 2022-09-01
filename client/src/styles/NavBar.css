@@ -1,0 +1,19 @@
+.styleNavBar{
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+    border-image: linear-gradient(to bottom, rgb(209, 205, 205), grey) 1;
+    border-style: solid;
+    /* border-color: grey; */
+    text-decoration: none;
+    color: grey;
+
+}
+
+.NavBar{
+    position: fixed;
+    right: 7rem;
+    top: 3rem;
+}
+
