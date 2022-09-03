@@ -31,14 +31,33 @@ function Home(){
     console.log(homeImage.length)
     if(homeImage.length > 0){
         return(
-            <div  className="homePage" style={{backgroundImage: `url(${homeImage})`}}>
-                <h1 >hello</h1>
-            </div>)
+            <>
+                <div  className="imageStyle" style={{backgroundImage: `url(${homeImage})`}}>
+                    <br/>
+                    <div className="writingBorder">
+                        <h1 className="imageWriting">YOUR FLORIDA DREAM HOME AWAITS</h1>
+                    </div>
+                    <br/>
+                    <div className="secondBorder">
+                        <h3 className="secondWriting">Luxury & Beach Realty makes it easy to find the home you’re looking for.</h3>
+                        <h3 className="secondWriting">Click on the button below and start your search today.</h3>
+                    </div>
+                </div>
+                <div className="bannerStyle">
+                    <h2 className="bannerWriting">Realtors...choose the brokerage that works for you, Luxury and Beach Realty</h2>
+                </div>
+            </>
+            )
     }else{
         return(
-             <div  className="homePage" style={{backgroundImage: `url(${homeArray.filter(image => 1 === image.id ).map(image => image.img_url)[0]})`}}>
-                <h1 style={{backgroundImage: `url(${homeArray.filter(image => 1 === image.id ).map(image => image.img_url)[0]})`}}>hello</h1>
-            </div>
+            <>
+                <div  className="imageStyle" style={{backgroundImage: `url(${homeArray.filter(image => homeArray.length === image.id ).map(image => image.img_url)[0]})`}}>
+                    <h1 className="imageWriting">hello</h1>
+                </div>
+                <div className="bannerStyle">
+                    <h2 className="bannerWriting">Realtors...choose the brokerage that works for you, Luxury and Beach Realty</h2>
+                </div>
+            </>
         )}
              
 

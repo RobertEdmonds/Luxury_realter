@@ -1,10 +1,53 @@
-.homePage{
+/* .homeStyle{
     width: 100rem;
-    margin-top: 6rem;
+    margin-top: 6.2rem;
     height: 30rem;
-    background: no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+} */
+
+.imageStyle{
+    width: 92.8rem;
+    margin-top: 6.2rem;
+    height: 30rem;
+    background: 10% 30%;
+    position: relative;
+}
+.writingBorder{
+    background-color: black;
+    opacity: .5;
+    height: 3rem;
+    width: 50rem;
+    margin-top: 4rem;
+    margin-left: 22%;
+    font-size: 1.3rem;
+}
+.imageWriting{
+    text-align: center;
+    color: white;
+}
+.secondBorder{
+    background-color: black;
+    opacity: .5;
+    width: 55rem;
+    margin-top: 3rem;
+    margin-left: 20%;
+    font-size: 1.3rem;
+}
+.secondWriting{
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    color: white;
+}
+.bannerStyle{
+    height: 4rem;
+    width: 92.8rem;
+    margin-top: 0%;
+    text-align: center;
+    background-color: navy;
+}
+.bannerWriting{
+    margin-top: 0px;
+    padding-top: .5rem;
+    color: white;
+    font-size: 2rem;
 }
