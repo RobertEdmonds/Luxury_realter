@@ -1,11 +1,4 @@
-/* .homeStyle{
-    width: 100rem;
-    margin-top: 6.2rem;
-    height: 30rem;
-} */
-
 .imageStyle{
-    /* width: 92.8rem; */
     width: 100rem;
     margin-top: 6.2rem;
     height: 30rem;
@@ -31,11 +24,12 @@
 }
 .secondBorder{
     background-color: black;
-    opacity: .5;
+    opacity: .6;
     width: 55rem;
     margin-top: 3rem;
-    margin-left: 23%;
+    margin-left: 22.5%;
     font-size: 1.3rem;
+    font-weight: bold;
 }
 .secondWriting{
     margin-top: 0%;

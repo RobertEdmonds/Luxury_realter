@@ -51,7 +51,7 @@ function Home(){
                 </div>
                 <div className="luxuryStatementStyle">
                     <p style={{width: "30rem", float: "left"}}>Whether you are buying or selling a home, Luxury & Beach Realty is passionate about delivering a truly exceptional experience. We’re a locally owned and operated brokerage dedicated to serving our community. Our agents are experts in the Naples Real Estate market because they live here, too. They’ll guide you through entire process, from preparing to list your home for sale, to marketing, to executing a purchase contract and all the way to closing.</p>
-                    <p style={{width: "30rem", float: "right"}}>With extensive knowledge in residential real estate, commitment to customer service and industry-leading cybersecurity, you can feel confident in your decision to work with us. We are the best team for the job because we have your best interest at heart—always.  <span style={{color: "navy"}}>To connect with us today, call (727) 800-5906.</span></p>
+                    <p style={{width: "30rem", float: "right"}}>With extensive knowledge in residential real estate, commitment to customer service and industry-leading cybersecurity, you can feel confident in your decision to work with us. We are the best team for the job because we have your best interest at heart—always.  <span style={{color: "navy"}}>To connect with us today, call (239) 849-7109.</span></p>
                 </div>
             </>
             )
@@ -71,8 +71,13 @@ function Home(){
                 <div className="bannerStyle">
                     <h2 className="bannerWriting">A realtor is not a salesperson... they are a matchmaker</h2>
                 </div>
-                <div>
-                    <h1>WELCOME TO LUXURY & BEACH REALTY</h1>
+                <div className="welcomeBanner">
+                    <h1 className="welcomeHOne">WELCOME TO LUXURY <span className="welcomeSpan">&</span> BEACH REALTY</h1>
+                    <h3 className="welcomeHThree">Extraordinary homes. Exceptional value. Unmatched peace of mind.</h3>
+                </div>
+                <div className="luxuryStatementStyle">
+                    <p style={{width: "30rem", float: "left"}}>Whether you are buying or selling a home, Luxury & Beach Realty is passionate about delivering a truly exceptional experience. We’re a locally owned and operated brokerage dedicated to serving our community. Our agents are experts in the Naples Real Estate market because they live here, too. They’ll guide you through entire process, from preparing to list your home for sale, to marketing, to executing a purchase contract and all the way to closing.</p>
+                    <p style={{width: "30rem", float: "right"}}>With extensive knowledge in residential real estate, commitment to customer service and industry-leading cybersecurity, you can feel confident in your decision to work with us. We are the best team for the job because we have your best interest at heart—always.  <span style={{color: "navy"}}>To connect with us today, call (239) 849-7109.</span></p>
                 </div>
             </>
         )}

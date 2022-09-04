@@ -3,6 +3,7 @@ import Header from './Header';
 import { Route } from "react-router-dom";
 import Home from "./Home";
 import Sales from './Sales';
+import Footer from './Footer';
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
       <Route exact path="/sales">
           <Sales />
       </Route>
+      <br/>
+      <Footer />
     </div>
   );
 }

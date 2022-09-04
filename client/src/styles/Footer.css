@@ -1,0 +1,11 @@
+.footerStyle{
+    height: 4.5rem;
+    width: 100rem;
+    background-color: navy;
+}
+.footerWriting{
+    margin-top: 12rem;
+    padding-top: 1.1rem;
+    color: white;
+    text-align: center;
+}
