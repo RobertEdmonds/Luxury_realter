@@ -5,31 +5,36 @@
 } */
 
 .imageStyle{
-    width: 92.8rem;
+    /* width: 92.8rem; */
+    width: 100rem;
     margin-top: 6.2rem;
     height: 30rem;
     background: 10% 30%;
-    position: relative;
 }
 .writingBorder{
     background-color: black;
-    opacity: .5;
-    height: 3rem;
-    width: 50rem;
-    margin-top: 4rem;
-    margin-left: 22%;
-    font-size: 1.3rem;
+    opacity: .6;
+    height: 4.5rem;
+    width: 70rem;
+    margin-top: 7rem;
+    margin-bottom: 0rem;
+    margin-left: 15%;
+    font-size: 1.7rem;
+    
 }
 .imageWriting{
     text-align: center;
     color: white;
+    margin-bottom: 0rem;
+    font-weight: bold;
+    opacity: 1;
 }
 .secondBorder{
     background-color: black;
     opacity: .5;
     width: 55rem;
     margin-top: 3rem;
-    margin-left: 20%;
+    margin-left: 23%;
     font-size: 1.3rem;
 }
 .secondWriting{
@@ -40,7 +45,7 @@
 }
 .bannerStyle{
     height: 4rem;
-    width: 92.8rem;
+    width: 100rem;
     margin-top: 0%;
     text-align: center;
     background-color: navy;
@@ -49,5 +54,35 @@
     margin-top: 0px;
     padding-top: .5rem;
     color: white;
-    font-size: 2rem;
+    font-size: 2.5rem;
+}
+.welcomeBanner{
+    text-align: center;
+    width: 65rem;
+    height: 5rem;
+    border-bottom: solid rgb(156, 156, 156) ;
+    margin-top: 2rem;
+    margin-left: 18%;
+    padding-bottom: 1.8rem;
+}
+.welcomeHOne{
+    font-family: Lucida;
+    font-size: 2.5rem;
+    margin-bottom: 0;
+}
+.welcomeSpan{
+    color: navy;
+    font-family: Apple Chancery;
+    font-size: 2.8rem;
+}
+.welcomeHThree{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Lucida Sans Typewriter;
+    font-size: 1.3rem;
+}
+.luxuryStatementStyle{
+    padding-top: 3rem;
+    padding-left: 13%;
+    padding-right: 13%;
 }
