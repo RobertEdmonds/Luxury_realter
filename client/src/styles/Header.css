@@ -9,4 +9,5 @@
     position: fixed;
     width: 130rem;
     opacity: .9;
+    z-index: 100;
 }

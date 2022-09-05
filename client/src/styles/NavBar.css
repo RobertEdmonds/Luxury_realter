@@ -7,7 +7,7 @@
     border-style: solid;
     text-decoration: none;
     color: grey;
-
+    z-index: 50;
 }
 
 .NavBar{
