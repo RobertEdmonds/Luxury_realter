@@ -1,0 +1,16 @@
+.signUpStyle{
+    padding-top: 10rem;
+    text-align: center;
+}
+.labelStyle{
+    font-weight: bolder;
+    font-size: larger;
+}
+.inputStyle{
+    height: 2rem;
+    width: 20rem;
+    margin-bottom: 2rem;
+    font-weight: bolder;
+    font-size: medium;
+    border-radius: 25%;
+}
