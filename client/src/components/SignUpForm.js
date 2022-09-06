@@ -5,86 +5,115 @@ function SignUpForm(){
     const [email, setEmail] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState(null)
+    const [phoneNumber, setPhoneNumber] = useState(0)
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState([])
 
     function handleSubmit(e){
         e.preventDefault()
+        setError([])
+        setLoading(true)
         const dataForm = {
-            email: email,
+            email,
             first_name: firstName,
             last_name: lastName,
             phone_number: phoneNumber,
-            password: password,
+            password,
             password_confirmation: passwordConfirm
         }
-        console.log(dataForm)
+        fetch("/signup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataForm)
+        })
+        .then((resp) => {
+            setLoading(false)
+            if(resp.ok){
+                resp.json().then(user => console.log(user))
+            }else{
+                resp.json().then(err => setError(err.errors))
+            }
+        })
     }
+    console.log(error)
     return(
-        <form className="signUpStyle" onSubmit={handleSubmit}>
-            <label className="labelStyle">Email Address
+        <>
+            <ul className="errorStyle">
+                {error.map(err => {
+                    return(
+                        <li key={err}>{err}</li>
+                    )
+                })}
+            </ul>
+            <form className="signUpStyle" onSubmit={handleSubmit}>
+                <label className="labelStyle">Email Address
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value.trim())}
+                    />
+                </label>
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </label>
-            <br/>
-            <label className="labelStyle">First Name
+                <label className="labelStyle">First Name
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="text"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value.trim())}
+                    />
+                </label>
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-            </label>
-            <br/>
-            <label className="labelStyle">Last Name
+                <label className="labelStyle">Last Name
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value.trim())}
+                    />
+                </label>
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-            </label>
-            <br/>
-            <label className="labelStyle">Phone Number
+                <label className="labelStyle">Phone Number
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="text"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value.trim())}
+                    />
+                </label>
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="text"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                />
-            </label>
-            <br/>
-            <label className="labelStyle">Password
+                <label className="labelStyle">Password
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </label>
-            <br/>
-            <label className="labelStyle">Password Confirmation
+                <label className="labelStyle">Password Confirmation
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="password"
+                        value={passwordConfirm}
+                        onChange={(e) => setPasswordConfirm(e.target.value)}
+                    />
+                </label>
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="password"
-                    value={passwordConfirm}
-                    onChange={(e) => setPasswordConfirm(e.target.value)}
-                />
-            </label>
-            <br/>
-            <button type="submit">Sign Up</button>
-        </form>
+                <button type="submit">{loading ? "Loading..." : "Sign Up"}</button>
+                
+            </form>
+        </>
     )
 }
 

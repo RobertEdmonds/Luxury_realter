@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
     skip_before_action :authorize, only: :create
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity 
 
     def create
         customer = Customer.create!(customer_params)
@@ -15,6 +16,11 @@ class CustomersController < ApplicationController
     private 
 
     def customer_params 
-        params.permit(:email.strip, :password, :password_confirmation, :first_name.strip, :last_name.strip, :phone_number)
+        params.permit(:email, :password, :password_confirmation, :first_name, :last_name, :phone_number)
     end
+
+    def render_unprocessable_entity(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity 
+    end
+
 end

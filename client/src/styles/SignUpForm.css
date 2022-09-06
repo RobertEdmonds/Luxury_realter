@@ -14,3 +14,9 @@
     font-size: medium;
     border-radius: 25%;
 }
+.errorStyle{
+    padding-top: 10rem;
+    padding-right: 5rem;
+    float: right;
+    height: 60rem;
+}
