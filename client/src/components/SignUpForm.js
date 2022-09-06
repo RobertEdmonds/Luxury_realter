@@ -5,7 +5,7 @@ function SignUpForm(){
     const [email, setEmail] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState(0)
+    const [phoneNumber, setPhoneNumber] = useState()
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
     const [loading, setLoading] = useState(false)
@@ -34,12 +34,18 @@ function SignUpForm(){
             setLoading(false)
             if(resp.ok){
                 resp.json().then(user => console.log(user))
+                setEmail("")
+                setFirstName("")
+                setLastName("")
+                setPassword("")
+                setPasswordConfirm("")
+                setPhoneNumber()
             }else{
                 resp.json().then(err => setError(err.errors))
             }
         })
     }
-    console.log(error)
+
     return(
         <>
             <ul className="errorStyle">
@@ -50,17 +56,17 @@ function SignUpForm(){
                 })}
             </ul>
             <form className="signUpStyle" onSubmit={handleSubmit}>
-                <label className="labelStyle">Email Address
+                <label className="labelStyle">Email Address<span className="starStyle">*</span>
                     <br/>
                     <input
                         className="inputStyle"
-                        type="text"
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value.trim())}
                     />
                 </label>
                 <br/>
-                <label className="labelStyle">First Name
+                <label className="labelStyle">First Name<span className="starStyle">*</span>
                     <br/>
                     <input
                         className="inputStyle"
@@ -70,7 +76,7 @@ function SignUpForm(){
                     />
                 </label>
                 <br/>
-                <label className="labelStyle">Last Name
+                <label className="labelStyle">Last Name<span className="starStyle">*</span>
                     <br/>
                     <input
                         className="inputStyle"
@@ -80,7 +86,7 @@ function SignUpForm(){
                     />
                 </label>
                 <br/>
-                <label className="labelStyle">Phone Number
+                <label className="labelStyle">Phone Number<span className="starStyle">*</span>
                     <br/>
                     <input
                         className="inputStyle"
@@ -90,7 +96,7 @@ function SignUpForm(){
                     />
                 </label>
                 <br/>
-                <label className="labelStyle">Password
+                <label className="labelStyle">Password<span className="starStyle">*</span>
                     <br/>
                     <input
                         className="inputStyle"
@@ -100,7 +106,7 @@ function SignUpForm(){
                     />
                 </label>
                 <br/>
-                <label className="labelStyle">Password Confirmation
+                <label className="labelStyle">Password Confirmation<span className="starStyle">*</span>
                     <br/>
                     <input
                         className="inputStyle"

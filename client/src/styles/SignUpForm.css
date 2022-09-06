@@ -19,4 +19,9 @@
     padding-right: 5rem;
     float: right;
     height: 60rem;
+    color: red;
+    font-weight: bold;
+}
+.starStyle{
+    color: red
 }
