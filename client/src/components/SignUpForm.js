@@ -5,7 +5,7 @@ function SignUpForm(){
     const [email, setEmail] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState()
+    const [phoneNumber, setPhoneNumber] = useState(0)
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
     const [loading, setLoading] = useState(false)
@@ -23,6 +23,7 @@ function SignUpForm(){
             password,
             password_confirmation: passwordConfirm
         }
+        console.log(dataForm)
         fetch("/signup", {
             method: "POST",
             headers: {
@@ -39,12 +40,39 @@ function SignUpForm(){
                 setLastName("")
                 setPassword("")
                 setPasswordConfirm("")
-                setPhoneNumber()
+                setPhoneNumber(0)
             }else{
                 resp.json().then(err => setError(err.errors))
             }
         })
     }
+    const showPhoneNumber = () => {
+    if(phoneNumber === 0){
+        return (
+            <label className="labelStyle">Phone Number<span className="starStyle">*</span>
+                <br/>
+                <input
+                    className="inputStyle"
+                    type="text"
+                    placeholder="0123456789"
+                    onChange={(e) => setPhoneNumber(e.target.value.trim())}
+                />
+            </label>
+            )
+        }else{
+            return(
+            <label className="labelStyle">Phone Number<span className="starStyle">*</span>
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="tel"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value.trim())}
+                    />
+                </label>
+        )}
+    }
+    
 
     return(
         <>
@@ -86,15 +114,7 @@ function SignUpForm(){
                     />
                 </label>
                 <br/>
-                <label className="labelStyle">Phone Number<span className="starStyle">*</span>
-                    <br/>
-                    <input
-                        className="inputStyle"
-                        type="text"
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value.trim())}
-                    />
-                </label>
+                {showPhoneNumber()}
                 <br/>
                 <label className="labelStyle">Password<span className="starStyle">*</span>
                     <br/>
