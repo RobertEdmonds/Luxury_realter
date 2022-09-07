@@ -1,16 +1,39 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/NavBar.css";
 import {UserContext} from "../context/user.js"
 
 
 function NavBar(){
-    const {customer} = useContext(UserContext)
-    console.log(customer)
-    const showForCustomer = () => {
-        if(!customer){
-            return(
-                <>
+    const {customer, handleLogout} = useContext(UserContext)
+
+    if(!customer){
+        return(
+            <div style={{top: "3rem"}} className="NavBar" >
+                <NavLink
+                    to="/"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    to="/sales"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Buy A Home 
+                </NavLink>
+                <NavLink
+                    to="/sold"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Sold Homes
+                </NavLink>
                 <NavLink
                     to="/signup"
                     exact="true"
@@ -27,11 +50,35 @@ function NavBar(){
                 >
                     Log In
                 </NavLink>
-                </>
+            </div>
             )
-        }else{
-            return(
-                <>
+    }else{
+        return(
+            <div style={{top: "0rem"}} className="NavBar" >
+                <NavLink
+                    to="/"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    to="/sales"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Buy A Home 
+                </NavLink>
+                <NavLink
+                    to="/sold"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Sold Homes
+                </NavLink>
                 <NavLink
                     to="/customer_info"
                     exact="true"
@@ -40,42 +87,12 @@ function NavBar(){
                 >
                     Welcome {customer.first_name}!
                 </NavLink>
-                <button className="buttonLogoutStyle" >
+                <button className="buttonLogoutStyle" onClick={handleLogout}>
                     Log Out
                 </button>
-                </>
-            )
-        }
+            </div>
+        )
     }
-    return(
-        <div className="NavBar" >
-            <NavLink
-                to="/"
-                exact="true"
-                className="styleNavBar"
-                activeStyle={{color: "black"}}
-            >
-                Home
-            </NavLink>
-            <NavLink
-                to="/sales"
-                exact="true"
-                className="styleNavBar"
-                activeStyle={{color: "black"}}
-            >
-                Buy A Home 
-            </NavLink>
-            <NavLink
-                to="/sold"
-                exact="true"
-                className="styleNavBar"
-                activeStyle={{color: "black"}}
-            >
-                Sold Homes
-            </NavLink>
-            {showForCustomer()}
-        </div>
-    )
 
 }
 
