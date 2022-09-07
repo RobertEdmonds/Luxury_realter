@@ -6,6 +6,7 @@ function Home(){
     const [ homeImage, setHomeImage ] = useState('')
     const [ idNumber, setIdNumber ] = useState(2)
 
+
     useEffect(()=> {
         fetch('/home_images')
         .then(r => r.json())
@@ -28,7 +29,6 @@ function Home(){
             clearInterval(myInterval)
         }
     })
-
     if(homeImage.length > 0){
         return(
             <>

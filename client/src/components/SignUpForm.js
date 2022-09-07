@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import '../styles/SignUpForm.css';
+import { UserContext } from '../context/user.js'
 
 function SignUpForm(){
+    const {setCustomer}  = useContext(UserContext)
     const [email, setEmail] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -34,18 +36,19 @@ function SignUpForm(){
         .then((resp) => {
             setLoading(false)
             if(resp.ok){
-                resp.json().then(user => console.log(user))
+                resp.json().then(user => setCustomer(user))
                 setEmail("")
                 setFirstName("")
                 setLastName("")
                 setPassword("")
                 setPasswordConfirm("")
-                setPhoneNumber(0)
+                setPhoneNumber(1)
             }else{
                 resp.json().then(err => setError(err.errors))
             }
         })
     }
+
     const showPhoneNumber = () => {
     if(phoneNumber === 0){
         return (
