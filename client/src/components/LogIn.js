@@ -68,7 +68,7 @@ function LogIn(){
                 />
             </label>
             <br/>
-            <button type="submit">{loading ? "Loading..." : "Log In"}</button>
+            <button type="submit" className="signUpButton">{loading ? "Loading..." : "Log In"}</button>
         </form>
         </>
     )

@@ -143,7 +143,7 @@ function SignUpForm(){
                     />
                 </label>
                 <br/>
-                <button type="submit">{loading ? "Loading..." : "Sign Up"}</button>
+                <button type="submit" className="signUpButton">{loading ? "Loading..." : "Sign Up"}</button>
                 
             </form>
         </>
