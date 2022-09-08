@@ -2,7 +2,8 @@
     width: 100rem;
     margin-top: 6.2rem;
     height: 30rem;
-    background: 10% 30%;
+    background: no-repeat;
+    background-size: 100%;
     z-index: 10;
 }
 .writingBorder{

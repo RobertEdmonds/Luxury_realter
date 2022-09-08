@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
 
     def create 
         customer = Customer.find_by(email: params[:email])
-        if user&.authenticate(params[:password])
+        if customer&.authenticate(params[:password])
             session[:customer_id] = customer.id 
             render json: customer, status: :created 
         else
-            render json: {errors: ["Not authorized"]}, status: :unauthorized
+            render json: {errors: ["Password or Email doesn't match our file"]}, status: :unauthorized
         end
     end
 

@@ -6,6 +6,7 @@ import Home from "./Home";
 import Sales from './Sales';
 import Footer from './Footer';
 import SignUpForm from './SignUpForm';
+import LogIn from './LogIn';
 import {UserContext} from "../context/user.js";
 
 
@@ -32,6 +33,9 @@ function App() {
       </Route>
       <Route exact path="/signup">
           <SignUpForm />
+      </Route>
+      <Route exact path="/login">
+        <LogIn />
       </Route>
       <br/>
       <Footer />
