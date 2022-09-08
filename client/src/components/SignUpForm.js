@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import '../styles/SignUpForm.css';
 import { UserContext } from '../context/user.js'
+import { useHistory } from "react-router-dom";
 
 function SignUpForm(){
     const {setCustomer}  = useContext(UserContext)
@@ -12,6 +13,7 @@ function SignUpForm(){
     const [passwordConfirm, setPasswordConfirm] = useState("")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState([])
+    const history = useHistory()
 
     function handleSubmit(e){
         e.preventDefault()
@@ -36,13 +38,16 @@ function SignUpForm(){
         .then((resp) => {
             setLoading(false)
             if(resp.ok){
-                resp.json().then(user => setCustomer(user))
+                resp.json().then(user => {
+                    setCustomer(user)
+                    history.push('/')
+                })
                 setEmail("")
                 setFirstName("")
                 setLastName("")
                 setPassword("")
                 setPasswordConfirm("")
-                setPhoneNumber(1)
+                setPhoneNumber(0)
             }else{
                 resp.json().then(err => setError(err.errors))
             }
@@ -57,7 +62,6 @@ function SignUpForm(){
                 <input
                     className="inputStyle"
                     type="text"
-                    placeholder="0123456789"
                     onChange={(e) => setPhoneNumber(e.target.value.trim())}
                 />
             </label>
