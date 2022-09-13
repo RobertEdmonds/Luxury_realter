@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import {UserContext} from '../context/user.js'
+import {UserContext} from '../context/user.js';
+import {EmployeeContext} from '../context/Employee.js'
 
 
 function LogIn(){
@@ -9,6 +10,7 @@ function LogIn(){
     const [error, setError] = useState([])
     const [loading, setLoading] = useState(false)
     const { setCustomer } = useContext(UserContext)
+    const { setEmployee } = useContext(EmployeeContext)
     const history = useHistory()
 
     function handleSubmit(e){
@@ -28,7 +30,11 @@ function LogIn(){
             setLoading(false);
             if (r.ok) {
               r.json().then((user) => {
-                setCustomer(user)
+                if(user.employee_number > 0){
+                    setEmployee(user)
+                }else{
+                    setCustomer(user)
+                }
                 history.push('/')
             });
             setEmail('')

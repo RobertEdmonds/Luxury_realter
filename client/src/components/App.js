@@ -8,17 +8,30 @@ import Footer from './Footer';
 import SignUpForm from './SignUpForm';
 import LogIn from './LogIn';
 import {UserContext} from "../context/user.js";
+import {EmployeeContext} from "../context/Employee.js";
 
 
 function App() {
   const {setCustomer} = useContext(UserContext)
+  const {setEmployee} = useContext(EmployeeContext)
+
   useEffect(() => {
-    fetch("/me").then(resp => {
+    fetch("/me")
+    .then(resp => {
         if(resp.ok){
             resp.json().then(user => setCustomer(user))
         }
-    })
-  })
+        })
+  },[])
+
+  useEffect(() => {
+    fetch("/employee")
+    .then(resp => {
+        if(resp.ok){
+            resp.json().then(user => setEmployee(user))
+        }
+        })
+  },[])
   
   return (
     
