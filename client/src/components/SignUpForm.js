@@ -79,6 +79,10 @@ function SignUpForm(){
                 </label>
         )}
     }
+
+    function transferLogin(){
+        history.push("/login")
+    }
     
 
     return(
@@ -144,7 +148,8 @@ function SignUpForm(){
                 </label>
                 <br/>
                 <button type="submit" className="signUpButton">{loading ? "Loading..." : "Sign Up"}</button>
-                
+                <br/> 
+                <button className="signUpButton" onClick={transferLogin}>Log In</button>
             </form>
         </>
     )

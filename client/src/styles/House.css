@@ -1,0 +1,42 @@
+.houseDisplay{
+    text-align: center;
+    margin-top: 6.2rem;
+}
+.clickImage{
+    width: 5rem;
+    background-color: black;
+    margin-top: 20rem;
+    display: inline-block;
+    margin-right: .5rem;
+    opacity: .8;
+}
+.houseImageBackground{
+    width: 40rem;
+    height: 20rem;
+    background: no-repeat;
+    background-size: 100%;
+    text-align: center;
+    margin-left: 30%;
+}
+.houseDescription{
+    margin-top: 4rem;
+}
+.leftArrowButton{
+    height: 2rem; 
+    float: left;
+    align-items: center;
+    border: none;
+    margin-top: 50%;
+}
+.leftArrow{
+    height: 1rem;
+}
+.rightArrowButton{
+    height: 1.5rem; 
+    float: right;
+    border: none;
+    margin-top: 50%;
+}
+.rightArrow{
+    height: 1rem;
+}

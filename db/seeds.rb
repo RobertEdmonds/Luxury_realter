@@ -66,16 +66,16 @@ Picture.create(picture_url: "https://cdn.pixabay.com/photo/2013/11/28/09/57/clea
 Picture.create(picture_url: "https://cdn.xxl.thumbs.canstockphoto.com/high-rise-condos-high-contrast-multi-colored-high-rise-condominiums-with-individual-balconys-stock-image_csp3287936.jpg", house_id: 14, order_number: 1)
 
 Picture.create(picture_url: "https://thumbs.dreamstime.com/b/condominium-townhouse-22159727.jpg", house_id: 15, order_number: 1)
+@bathroom = (1..15).to_a
+
+15.times do []
+     Picture.create(picture_url: "https://previews.123rf.com/images/misterbeautiful/misterbeautiful1802/misterbeautiful180200005/94686693-home-interior-modern-beautiful-apartment-in-new-luxury-location-bedroom.jpg", house_id: @bathroom.shift, order_number: 6)
+end
 
 @ids = (1..15).to_a 
 
 15.times do []
     Picture.create!(picture_url: "https://media.vrbo.com/lodging/31000000/30530000/30524500/30524465/e390e967.c10.jpg", house_id: @ids.shift, order_number: 2)
-end
-@id = (1..15).to_a
-
-15.times do []
-    Picture.create!(picture_url: "https://images.unsplash.com/photo-1611095210561-67f0832b1ca3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29uZG8lMjBpbnRlcmlvcnxlbnwwfHwwfHw%3D&w=1000&q=80", house_id: @id.shift, order_number: 3)
 end
 @idskitchen = (1..15).to_a
 
@@ -87,10 +87,10 @@ end
 15.times do []
      Picture.create(picture_url: "https://www.thespruce.com/thmb/2ZQoF_J0Do0Uic9emmTrLrRNey8=/2048x1366/filters:fill(auto,1)/walk-in-closet-storage-4172366-hero-740c4b90b7a94c2a98015f95e1270052.jpg", house_id: @bedroom.shift, order_number: 5)
 end
-@bathroom = (1..15).to_a
+@id = (1..15).to_a
 
 15.times do []
-     Picture.create(picture_url: "https://previews.123rf.com/images/misterbeautiful/misterbeautiful1802/misterbeautiful180200005/94686693-home-interior-modern-beautiful-apartment-in-new-luxury-location-bedroom.jpg", house_id: @bathroom.shift, order_number: 6)
+    Picture.create!(picture_url: "https://images.unsplash.com/photo-1611095210561-67f0832b1ca3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29uZG8lMjBpbnRlcmlvcnxlbnwwfHwwfHw%3D&w=1000&q=80", house_id: @id.shift, order_number: 3)
 end
 @yard = (1..15).to_a
 

@@ -44,6 +44,10 @@ function LogIn(){
             }
           });
     }
+
+    function handleTransfer(){
+        history.push("/signup")
+    }
     return(
         <>
         <ul className="errorStyle">
@@ -75,6 +79,8 @@ function LogIn(){
             </label>
             <br/>
             <button type="submit" className="signUpButton">{loading ? "Loading..." : "Log In"}</button>
+            <br/>
+            <button className="signUpButton" onClick={handleTransfer}>Sign Up</button>
         </form>
         </>
     )
