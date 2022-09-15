@@ -7,8 +7,9 @@
     background-color: black;
     margin-top: 20rem;
     display: inline-block;
-    margin-right: .5rem;
+    margin-right: .2rem;
     opacity: .8;
+    z-index: 10;
 }
 .houseImageBackground{
     width: 40rem;
@@ -22,20 +23,24 @@
     margin-top: 4rem;
 }
 .leftArrowButton{
-    height: 2rem; 
+    height: 3.5rem; 
     float: left;
     align-items: center;
     border: none;
     margin-top: 50%;
+    opacity: .8;
+    z-index: 15;
 }
 .leftArrow{
     height: 1rem;
 }
 .rightArrowButton{
-    height: 1.5rem; 
+    height: 3.5rem; 
     float: right;
     border: none;
     margin-top: 50%;
+    opacity: .8;
+    z-index: 15;
 }
 .rightArrow{
     height: 1rem;

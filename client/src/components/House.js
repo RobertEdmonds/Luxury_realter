@@ -15,31 +15,55 @@ function House({house, toggle}){
             )
         })
 
-        const displayMarket = () => {
-            if(home.on_market === true && home.undercontract === true){
-                return(
-                    <p>Accepting Backup Offers</p>
-                )
-            }else if(home.on_market === true && home.undercontract === false){
-                return(
-                    <p>House for sale</p>
-                )
-            }else if(home.on_market === false && home.undercontract === false){
-                return(
-                    <p>Coming Soon</p>
-                )
-            }else{
-                return(
-                    <p>Sold</p>
-                )
-            }
+    const displayMarket = () => {
+        if(home.on_market === true && home.undercontract === true){
+            return(
+                <p>Accepting Backup Offers</p>
+            )
+        }else if(home.on_market === true && home.undercontract === false){
+            return(
+                <p>House for sale</p>
+            )
+        }else if(home.on_market === false && home.undercontract === false){
+            return(
+                <p>Coming Soon</p>
+            )
+        }else{
+            return(
+                <p>Sold</p>
+            )
         }
+    }
+        
+    function handleLeftClick(image){
+        const findSpot = home.pictures.find(pic => pic.picture_url === image)
+        if(findSpot.order_number === 1){
+            const lastPhoto = home.pictures.length
+            const newPhoto =  home.pictures.find(photo => photo.order_number === lastPhoto)
+            setBackgroundImage(newPhoto.picture_url)
+        }else{
+            const showPhoto = home.pictures.find(photo => photo.order_number === (findSpot.order_number - 1))
+            setBackgroundImage(showPhoto.picture_url)
+        }
+    }
+
+    function handleRightClick(image){
+        const findSpot = home.pictures.find(pic => pic.picture_url === image)
+        if(findSpot.order_number === home.pictures.length){
+            const firstPhoto = home.pictures[0].order_number
+            const newPhoto =  home.pictures.find(photo => photo.order_number === firstPhoto)
+            setBackgroundImage(newPhoto.picture_url)
+        }else{
+            const showPhoto = home.pictures.find(photo => photo.order_number === (findSpot.order_number + 1))
+            setBackgroundImage(showPhoto.picture_url)
+        }
+    }
         if(!!employee){
             return(
-                <>
+                <div key={house.id}>
                     <div style={{backgroundImage: `url(${backgroundImage})`}} className="houseImageBackground">
-                        <button className='leftArrowButton'><img className='leftArrow' src='https://cdn-icons-png.flaticon.com/512/271/271220.png' alt='Left Arrow'/></button>
-                        <button className='rightArrowButton'><img className='rightArrow' src='https://cdn-icons-png.flaticon.com/512/60/60758.png' alt='Right Arrow'/></button>
+                        <button className='leftArrowButton' onClick={() => handleLeftClick(backgroundImage)}><img className='leftArrow' src='https://cdn-icons-png.flaticon.com/512/271/271220.png' alt='Left Arrow'/></button>
+                        <button className='rightArrowButton' onClick={() => handleRightClick(backgroundImage)}><img className='rightArrow' src='https://cdn-icons-png.flaticon.com/512/60/60758.png' alt='Right Arrow'/></button>
                         {displayPictures}
                     </div>
                     <div className='houseDescription'>
@@ -52,7 +76,7 @@ function House({house, toggle}){
                         <p>Baths: {home.bathrooms}</p>
                         
                     </div>
-                </>
+                </div>
             )
         }
 
