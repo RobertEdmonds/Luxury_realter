@@ -37,36 +37,44 @@ function Sales(){
     const showHouses = houses.map(house => {
         if(house.id % 2 === 0){
         return(
-            <div className="leftImageDiv" key={house.id} >
+            <div className="rightImageDiv" key={house.id} >
             <div >
                 <img className="image" src={house.pictures[0].picture_url} alt={house.pictures[0].id}/>
                 <br/>
-                <button className="signUpButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
             </div>
             <br/>
             </div>
         )
         }else{
             return(
-                <div className="rightImageDiv" key={house.id} >
+                <div className="leftImageDiv" key={house.id} >
                 <div >
                     <img className="image" src={house.pictures[0].picture_url} alt={house.pictures[0].id}/>
                     <br/>
-                    <button className="signUpButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                    <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
                 </div>
                 <br/>
                 </div>
             )
         }
     })
+    const setRem = (showHouses.length * 15)
 
-    return(
-        <>
-        <div className={displayFormat}>
-        {toggle? <House house={houseInfo} toggle={setToggle} setDisplayFormat={setDisplayFormat}/> : showHouses}
-        </div>
-        </>
-    )
+
+    if(!!employee){
+        return(
+            <>
+            {toggle ? <div className={displayFormat} style={{minHeight: `40rem`}}><House house={houseInfo} toggle={setToggle} setDisplayFormat={setDisplayFormat}/></div> : <div className={displayFormat} style={{minHeight: `${setRem.toString()}rem`}}>{showHouses}<button className="mainButton" style={{marginLeft: "7rem", position: "fixed"}}>Add House</button></div>}   
+            </>
+        )
+    }else{
+        return(
+            <>
+            {toggle ? <div className={displayFormat} style={{maxHeight: "40rem"}}><House house={houseInfo} toggle={setToggle} setDisplayFormat={setDisplayFormat}/></div> : <div className={displayFormat} style={{minHeight: `${setRem.toString()}rem`}}>{showHouses}</div>}
+            </>
+        )
+    }
 }
 
 export default Sales;

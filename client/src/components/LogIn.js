@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import {UserContext} from '../context/user.js';
-import {EmployeeContext} from '../context/Employee.js'
+import {EmployeeContext} from '../context/Employee.js';
+import '../styles/Login.css'
 
 
 function LogIn(){
@@ -57,7 +58,7 @@ function LogIn(){
                 )
             })}
         </ul>
-        <form className="signUpStyle" onSubmit={handleSubmit}>
+        <form className="loginStyle" onSubmit={handleSubmit}>
             <label className="labelStyle">Email Address<span className="starStyle">*</span>
                 <br/>
                 <input
@@ -78,9 +79,9 @@ function LogIn(){
                 />
             </label>
             <br/>
-            <button type="submit" className="signUpButton">{loading ? "Loading..." : "Log In"}</button>
+            <button type="submit" className="mainButton">{loading ? "Loading..." : "Log In"}</button>
             <br/>
-            <button className="signUpButton" onClick={handleTransfer}>Sign Up</button>
+            <button className="mainButton" onClick={handleTransfer}>Sign Up</button>
         </form>
         </>
     )

@@ -88,8 +88,7 @@ function House({house, toggle, setDisplayFormat}){
             <div className='houseDisplay'>
                 {displayHouse}
                 <div>
-                    <button className="signUpButton" onClick={() => handleToggle()}>View More Homes</button>
-                    <button className='signUpButton'>Edit</button>
+                    <span style={{display: "inline-flex"}}><button className="mainButton" onClick={() => handleToggle()}>View More Homes</button><h1 style={{marginLeft: "1rem", marginRight: "1rem"}}>/</h1><button className="mainButton">Edit</button></span>
                 </div>
             </div>
         )
@@ -99,7 +98,7 @@ function House({house, toggle, setDisplayFormat}){
             <div className='houseDisplay'>
                 {displayHouse}
                 <div>
-                    <button className="signUpButton" onClick={() => handleToggle()}>View More Homes</button>
+                    <span style={{display: "inline-flex"}}><button className="mainButton" onClick={() => handleToggle()}>View More Homes</button><h1 style={{marginLeft: "1rem", marginRight: "1rem"}}>/</h1><button className="mainButton">Schedule Viewing</button></span>
                 </div>
             </div>
         )

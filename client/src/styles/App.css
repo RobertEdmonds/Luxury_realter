@@ -1,3 +1,15 @@
+.mainButton{
+  width: 7rem;
+  height: 3rem;
+  margin-top: 2rem;
+  font-size: larger;
+  font-weight: bold;
+  background-color: navy;
+  color: white;
+  font-style: Lucida;
+  border-radius: 30%;
+}
+
 /* .App {
   text-align: center;
 }

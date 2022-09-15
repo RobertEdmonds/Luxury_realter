@@ -147,9 +147,9 @@ function SignUpForm(){
                     />
                 </label>
                 <br/>
-                <button type="submit" className="signUpButton">{loading ? "Loading..." : "Sign Up"}</button>
+                <button type="submit" className="mainButton">{loading ? "Loading..." : "Sign Up"}</button>
                 <br/> 
-                <button className="signUpButton" onClick={transferLogin}>Log In</button>
+                <button className="mainButton" onClick={transferLogin}>Log In</button>
             </form>
         </>
     )
