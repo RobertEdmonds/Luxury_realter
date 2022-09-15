@@ -1,0 +1,24 @@
+.leftImageDiv{
+    max-width: 100%;
+    max-height: 100%;
+    padding: 25px;
+
+    float: left
+}
+.rightImageDiv{
+    max-width: 100%;
+    max-height: 100%;
+    padding: 25px;
+
+    float: right
+}
+.image{
+    width: 400px;
+    height: 300px
+}
+.salesDisplay{
+    width: 80rem;
+    margin-top: 6.2rem;
+    margin-left: 8rem;
+    min-height: 300rem;
+}

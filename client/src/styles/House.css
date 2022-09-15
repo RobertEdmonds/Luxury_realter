@@ -1,10 +1,10 @@
 .houseDisplay{
     text-align: center;
     margin-top: 6.2rem;
+    max-height: 100rem;
 }
 .clickImage{
     width: 5rem;
-    background-color: black;
     margin-top: 20rem;
     display: inline-block;
     margin-right: .2rem;
@@ -44,4 +44,8 @@
 }
 .rightArrow{
     height: 1rem;
+}
+.description{
+    width: 20rem;
+    display: inline;
 }

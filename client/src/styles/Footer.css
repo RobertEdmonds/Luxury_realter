@@ -3,8 +3,9 @@
     height: 4.5rem;
     width: 99rem;
     background-color: navy;
-    bottom: -4.5rem;
+    bottom: 0;
     align-items: center;
+    position: sticky
 
 }
 .footerWriting{
