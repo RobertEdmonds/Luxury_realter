@@ -34,7 +34,7 @@ function NavBar(){
                     className="styleNavBar"
                     activeStyle={{color: "black"}}
                 >
-                    Sold Homes
+                    Success Stories
                 </NavLink>
                 <NavLink
                     to="/signup"
@@ -79,7 +79,15 @@ function NavBar(){
                     className="styleNavBar"
                     activeStyle={{color: "black"}}
                 >
-                    Sold Homes
+                    Success Stories
+                </NavLink>
+                <NavLink
+                    to="/new_house"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Add House
                 </NavLink>
                 <NavLink
                     to="/customer_info"
@@ -120,7 +128,7 @@ function NavBar(){
                     className="styleNavBar"
                     activeStyle={{color: "black"}}
                 >
-                    Sold Homes
+                    Success Stories
                 </NavLink>
                 <NavLink
                     to="/customer_info"

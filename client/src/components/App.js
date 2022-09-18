@@ -5,8 +5,9 @@ import { Route } from "react-router-dom";
 import Home from "./Home";
 import Sales from './Sales';
 import Footer from './Footer';
-import SignUpForm from './SignUpForm';
-import LogIn from './LogIn';
+import SignUpForm from '../forms/SignUpForm';
+import LogIn from '../forms/LogIn';
+import NewHouseForm from '../forms/NewHouseForm';
 import {UserContext} from "../context/user.js";
 import {EmployeeContext} from "../context/Employee.js";
 
@@ -49,6 +50,9 @@ function App() {
       </Route>
       <Route exact path="/login">
         <LogIn />
+      </Route>
+      <Route exact path="/new_house">
+        <NewHouseForm />
       </Route>
       <br/>
       <Footer />

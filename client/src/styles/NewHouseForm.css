@@ -1,0 +1,16 @@
+.newHouseForm{
+    margin-top: 6.2rem;
+    text-align: center;
+}
+.newHouseLabel{
+    margin: 1rem;
+    font-weight: bolder;
+}
+.newHouseInput{
+    margin-left: .5rem;
+    margin-top: .5rem;
+}
+.newHouseCheckBox{
+    font-weight: bold;
+    margin: 1rem;
+}
