@@ -5,7 +5,7 @@ import {EmployeeContext} from '../context/Employee.js';
 import House from "./House.js";
 import '../styles/Sales.css'
 
-function Sales({houses}){
+function Sales({houses , handleEditHouse}){
     const {customer} = useContext(UserContext)
     const {employee} = useContext(EmployeeContext)
     const [houseInfo, setHouseInfo] = useState([])
@@ -31,7 +31,88 @@ function Sales({houses}){
     }
 
     const showHouses = houses.map(house => {
-        if(house.id % 2 === 0 && house.pictures.length > 0){
+        if(house.id % 2 === 0 && house.pictures.length > 0 && !!customer){
+            return(
+                <div className="rightImageDiv" key={house.id} >
+                    <div >
+                        <img className="image" src={house.pictures[0].picture_url} alt={house.pictures[0].id}/>
+                        <br/>
+                        <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                    </div>
+                    <br/>
+                </div>
+            )
+        }else if(house.id %2 && house.pictures.length > 0 && !!customer){
+            return(
+                <div className="leftImageDiv" key={house.id} >
+                <div >
+                    <img className="image" src={house.pictures[0].picture_url} alt={house.pictures[0].id}/>
+                    <br/>
+                    <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                </div>
+                <br/>
+                </div>
+            )
+        }else if(house.id % 2 === 0 && house.pictures.length === 0 && !!customer){
+            return(
+                <div className="rightImageDiv" key={house.id} >
+                    <div >
+                        <img className="image" src="https://freesvg.org/img/1410828243.png" alt={house.id}/>
+                        <br/>
+                        <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                    </div>
+                    <br/>
+                </div>
+            )
+        }else if(house.id % 2 === 0 && house.pictures.length > 0 && !!employee){
+            return(
+                <div className="rightImageDiv" key={house.id} >
+                    <div >
+                        <img className="image" src={house.pictures[0].picture_url} alt={house.pictures[0].id}/>
+                        <br/>
+                        <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                        <button className="mainButton" onClick={() => handleEditHouse(house)}>Edit House</button>
+                    </div>
+                    <br/>
+                </div>
+            )
+        }else if(house.id %2 && house.pictures.length > 0 && !!employee){
+            return(
+                <div className="leftImageDiv" key={house.id} >
+                <div >
+                    <img className="image" src={house.pictures[0].picture_url} alt={house.pictures[0].id}/>
+                    <br/>
+                    <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                    <button className="mainButton" onClick={() => handleEditHouse(house)}>Edit House</button>
+                </div>
+                <br/>
+                </div>
+            )
+        }else if(house.id % 2 === 0 && house.pictures.length === 0 && !!employee){
+            return(
+                <div className="rightImageDiv" key={house.id} >
+                    <div >
+                        <img className="image" src="https://freesvg.org/img/1410828243.png" alt={house.id}/>
+                        <br/>
+                        <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                        <button className="mainButton" onClick={() => handleEditHouse(house)}>Edit House</button>
+                    </div>
+                    <br/>
+                </div>
+            )
+        }else if(house.id % 2 && house.pictures.length === 0 && !!employee){
+            return(
+                <div className="leftImageDiv" key={house.id} >
+                    <div >
+                        <img className="image" src="https://freesvg.org/img/1410828243.png" alt={house.id}/>
+                        <br/>
+                        <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
+                        <button className="mainButton" onClick={() => handleEditHouse(house)}>Edit House</button>
+                    </div>
+                    <br/>
+                </div>
+            )
+        }else if(house.id % 2 === 0 && house.pictures.length > 0){
             return(
                 <div className="rightImageDiv" key={house.id} >
                     <div >

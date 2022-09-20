@@ -11,6 +11,13 @@ class HousesController < ApplicationController
         render json: house, status: :created 
     end
 
+    def update 
+        house = House.find(params[:id])
+        house.update!(house_params)
+        render json: house, status: :created 
+    end
+
+
     private 
 
     def house_params

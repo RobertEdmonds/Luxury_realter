@@ -1,72 +1,70 @@
 import React, { useState } from "react"
 import '../styles/NewHouseForm.css'
 
-function NewHouseForm({addNewHouse}){
-    const [ address, setAddress ] = useState("")
-    const [ city, setCity ] = useState("")
-    const [ state, setState] = useState("")
-    const [ zip, setZip ] = useState("")
-    const [ rooms, setRooms ] = useState("1")
-    const [ bathrooms,setBathrooms ] = useState("1")
-    const [ sqft, setSqft ] = useState("")
-    const [ price, setPrice ] = useState("")
-    const [ onMarket, setOnMarket ] = useState(false)
-    const [ underContract, setUnderContract ] = useState(false)
-    const [ pool, setPool ] = useState(false)
-    const [ waterfront, setWaterfront ] = useState(false)
-    const [ condo, setCondo ] = useState(false)
-    const [ description, setDescription ] = useState("")
-    const [ error, setError ] = useState([])
+function NewHouseForm({handleHouseForm, setOnMarket, onMarket, setUnderContract, underContract, pool, setPool, waterfront, setWaterfront, condo, setCondo, address, setAddress, city, setCity, state, setState, zip, setZip, rooms, setRooms, bathrooms, setBathrooms, sqft, setSqft, price, setPrice, description, setDescription, error}){
+    // const [ onMarket, setOnMarket ] = useState(false)
+    // const [ underContract, setUnderContract ] = useState(false)
+    // const [ pool, setPool ] = useState(false)
+    // const [ waterfront, setWaterfront ] = useState(false)
+    // const [ condo, setCondo ] = useState(false)
+    // const [ address, setAddress ] = useState("")
+    // const [ city, setCity ] = useState("")
+    // const [ state, setState] = useState("")
+    // const [ zip, setZip ] = useState("")
+    // const [ rooms, setRooms ] = useState("1")
+    // const [ bathrooms,setBathrooms ] = useState("1")
+    // const [ sqft, setSqft ] = useState("")
+    // const [ price, setPrice ] = useState("")
+    // const [ description, setDescription ] = useState("")
+    // const [ error, setError ] = useState([])
 
-
-    function handleNewHouseSubmit(e){
-        e.preventDefault()
-        const formData = {
-            address,
-            city,
-            state,
-            zip_code: parseInt(zip),
-            rooms: parseInt(rooms),
-            bathrooms: parseInt(bathrooms),
-            sqft: parseInt(sqft),
-            price: parseInt(price),
-            on_market: onMarket,
-            under_contract: underContract,
-            pool,
-            waterfront,
-            condo,
-            description
-        }
-        console.log(formData)
-        fetch("/houses", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData) 
-        })
-        .then(resp => {
-            if(resp.ok){
-                resp.json().then(house => addNewHouse(house))
-                setAddress("")
-                setCity("")
-                setState("")
-                setZip("")
-                setRooms("1")
-                setBathrooms("1")
-                setPrice("")
-                setSqft("")
-                setDescription("")
-                setOnMarket(false)
-                setUnderContract(false)
-                setPool(false)
-                setWaterfront(false)
-                setCondo(false)
-            }else{
-                resp.json().then(err => setError(err.errors))
-            }
-        })
-    }
+    // function handleNewHouseSubmit(e){
+    //     e.preventDefault()
+    //     const formData = {
+    //         address,
+    //         city,
+    //         state,
+    //         zip_code: parseInt(zip),
+    //         rooms: parseInt(rooms),
+    //         bathrooms: parseInt(bathrooms),
+    //         sqft: parseInt(sqft),
+    //         price: parseInt(price),
+    //         on_market: onMarket,
+    //         under_contract: underContract,
+    //         pool,
+    //         waterfront,
+    //         condo,
+    //         description
+    //     }
+    //     fetch("/houses", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(formData) 
+    //     })
+    //     .then(resp => {
+    //         if(resp.ok){
+    //             resp.json().then(house => addNewHouse(house))
+    //             setAddress("")
+    //             setCity("")
+    //             setState("")
+    //             setZip("")
+    //             setRooms("1")
+    //             setBathrooms("1")
+    //             setPrice("")
+    //             setSqft("")
+    //             setDescription("")
+    //             setOnMarket(false)
+    //             setUnderContract(false)
+    //             setPool(false)
+    //             setWaterfront(false)
+    //             setCondo(false)
+    //         }else{
+    //             resp.json().then(err => setError(err.errors))
+    //         }
+    //     })
+    // }
 
     return(
         <>
@@ -77,7 +75,7 @@ function NewHouseForm({addNewHouse}){
                     )
                 })}
             </ul>
-            <form onSubmit={handleNewHouseSubmit} className="newHouseForm">
+            <form onSubmit={handleHouseForm} className="newHouseForm">
                 <label className="newHouseLabel">
                     Address:
                     <input 
@@ -118,7 +116,7 @@ function NewHouseForm({addNewHouse}){
                         className="newHouseInput"
                         style={{width: "5rem"}}
                         type="text"
-                        name="zip"
+                        name="zip_code"
                         value={zip}
                         onChange={(e) => setZip(e.target.value)}
                     />
@@ -191,6 +189,7 @@ function NewHouseForm({addNewHouse}){
                     <input 
                         className="newHouseInput"
                         type='checkbox'
+                        name="on_market"
                         checked={onMarket}
                         onChange={() => setOnMarket(!onMarket)}
                     />
@@ -199,6 +198,7 @@ function NewHouseForm({addNewHouse}){
                     Is It Under Contract?
                     <input 
                     type='checkbox'
+                    name="under_contract"
                     checked={underContract}
                     onChange={() => setUnderContract(!underContract)}
                     />
@@ -209,6 +209,7 @@ function NewHouseForm({addNewHouse}){
                     <input
                         className="newHouseInput"
                         type='checkbox'
+                        name="pool"
                         checked={pool}
                         onChange={() => setPool(!pool)}
                     />
@@ -218,6 +219,7 @@ function NewHouseForm({addNewHouse}){
                     <input
                         className="newHouseInput"
                         type='checkbox'
+                        name="waterfront"
                         checked={waterfront}
                         onChange={() => setWaterfront(!waterfront)}
                     />
@@ -227,6 +229,7 @@ function NewHouseForm({addNewHouse}){
                     <input
                         className="newHouseInput" 
                         type='checkbox'
+                        name="condo"
                         checked={condo}
                         onChange={() => setCondo(!condo)}
                     />

@@ -1,11 +1,11 @@
-import {useState, useContext} from 'react';
+import { useContext } from 'react';
 import {EmployeeContext} from '../context/Employee.js';
 import '../styles/House.css';
 
 function House({house, toggle, setDisplayFormat, setBackgroundImage, backgroundImage}){
     const {employee} = useContext(EmployeeContext)
     // const [backgroundImage, setBackgroundImage] = useState("")
-    
+
     const displayHouse = house.map(home => {
 
         const displayPictures = home.pictures.map(image => {      
