@@ -2,26 +2,27 @@ import {useState, useContext} from 'react';
 import {EmployeeContext} from '../context/Employee.js';
 import '../styles/House.css';
 
-function House({house, toggle, setDisplayFormat}){
+function House({house, toggle, setDisplayFormat, setBackgroundImage, backgroundImage}){
     const {employee} = useContext(EmployeeContext)
-    const [backgroundImage, setBackgroundImage] = useState(house[0].pictures[0].picture_url)
+    // const [backgroundImage, setBackgroundImage] = useState("")
     
     const displayHouse = house.map(home => {
-        const displayPictures = home.pictures.map(image => {
-            return(
-                <img key={image.id} className="clickImage" src={image.picture_url} alt={image.order_number} onClick={() => setBackgroundImage(image.picture_url)}/>
-            )
-        })
+
+        const displayPictures = home.pictures.map(image => {      
+                    return(
+                        <img key={image.id} className="clickImage" src={image.picture_url} alt={image.order_number} onClick={() => setBackgroundImage(image.picture_url)}/>
+                    )})
+            
         const displayMarket = () => {
-            if(home.on_market === true && home.undercontract === true){
+            if(home.on_market === true && home.under_contract === true){
                 return(
                     <h4 style={{color: "orange"}}>Accepting Backup Offers</h4>
                 )
-            }else if(home.on_market === true && home.undercontract === false){
+            }else if(home.on_market === true && home.under_contract === false){
                 return(
                     <h4 style={{color: "green"}}>House for sale</h4>
                 )
-            }else if(home.on_market === false && home.undercontract === false){
+            }else if(home.on_market === false && home.under_contract === false){
                 return(
                     <h4 style={{color: "orange"}}>Coming Soon</h4>
                 )
@@ -55,29 +56,48 @@ function House({house, toggle, setDisplayFormat}){
                 setBackgroundImage(showPhoto.picture_url)
             }
         }
- 
-    return(
-        <div key={house.id}>
-            <div style={{backgroundImage: `url(${backgroundImage})`}} className="houseImageBackground">
-                <button className='leftArrowButton' onClick={() => handleLeftClick(backgroundImage)}><img className='leftArrow' src='https://cdn-icons-png.flaticon.com/512/271/271220.png' alt='Left Arrow'/></button>
-                <button className='rightArrowButton' onClick={() => handleRightClick(backgroundImage)}><img className='rightArrow' src='https://cdn-icons-png.flaticon.com/512/60/60758.png' alt='Right Arrow'/></button>
-                {displayPictures}
+    if(home.pictures.length === 0){
+        return(
+            <div key={house.id}>
+                <div style={{backgroundImage: `url(https://freesvg.org/img/1410828243.png)`}} className="houseImageBackground"></div>
+                <div className='houseDescription'>
+                    <h2>$ {home.price}</h2>
+                    <h4>{home.address}</h4>
+                    <h4>{home.city}, {home.state} {home.zip_code}</h4>
+                    {displayMarket()}
+                    <p>SQFT: {home.sqft}</p>
+                    <p>Rooms: {home.rooms}</p>
+                    <p>Baths: {home.bathrooms}</p>
+                    <p>Pool: {home.pool.toString()}</p>
+                    <p>Waterfront: {home.waterfront.toString()}</p>
+                    <p>Condo: {home.condo.toString()}</p>
+                    <p className="description">{home.description}</p>
+                </div>
             </div>
-            <div className='houseDescription'>
-                <h2>$ {home.price}</h2>
-                <h4>{home.address}</h4>
-                <h4>{home.city}, {home.state} {home.zip_code}</h4>
-                {displayMarket()}
-                <p>SQFT: {home.sqft}</p>
-                <p>Rooms: {home.rooms}</p>
-                <p>Baths: {home.bathrooms}</p>
-                <p>Pool: {home.pool.toString()}</p>
-                <p>Waterfront: {home.water_front.toString()}</p>
-                <p>Condo: {home.condo.toString()}</p>
-                <p className="description">{home.description}</p>
+        )
+    }else{
+        return(
+            <div key={house.id}>
+                <div style={{backgroundImage: `url(${backgroundImage})`}} className="houseImageBackground">
+                    <button className='leftArrowButton' onClick={() => handleLeftClick(backgroundImage)}><img className='leftArrow' src='https://cdn-icons-png.flaticon.com/512/271/271220.png' alt='Left Arrow'/></button>
+                    <button className='rightArrowButton' onClick={() => handleRightClick(backgroundImage)}><img className='rightArrow' src='https://cdn-icons-png.flaticon.com/512/60/60758.png' alt='Right Arrow'/></button>
+                    {displayPictures}
+                </div>
+                <div className='houseDescription'>
+                    <h2>$ {home.price}</h2>
+                    <h4>{home.address}</h4>
+                    <h4>{home.city}, {home.state} {home.zip_code}</h4>
+                    {displayMarket()}
+                    <p>SQFT: {home.sqft}</p>
+                    <p>Rooms: {home.rooms}</p>
+                    <p>Baths: {home.bathrooms}</p>
+                    <p>Pool: {home.pool.toString()}</p>
+                    <p>Waterfront: {home.waterfront.toString()}</p>
+                    <p>Condo: {home.condo.toString()}</p>
+                    <p className="description">{home.description}</p>
+                </div>
             </div>
-        </div>
-    )
+    )}
     })
     function handleToggle(){
         setDisplayFormat("salesDisplay")

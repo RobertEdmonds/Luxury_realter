@@ -49,9 +49,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_10_185316) do
     t.text "description"
     t.integer "price"
     t.boolean "on_market"
-    t.boolean "undercontract"
+    t.boolean "under_contract"
     t.boolean "pool"
-    t.boolean "water_front"
+    t.boolean "waterfront"
     t.boolean "condo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

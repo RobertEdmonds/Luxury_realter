@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import '../styles/App.css';
 import Header from './Header';
 import { Route } from "react-router-dom";
@@ -15,6 +15,7 @@ import {EmployeeContext} from "../context/Employee.js";
 function App() {
   const {setCustomer} = useContext(UserContext)
   const {setEmployee} = useContext(EmployeeContext)
+  const [houses, setHouses] = useState([])
 
   useEffect(() => {
     fetch("/me")
@@ -33,6 +34,20 @@ function App() {
         }
         })
   },[])
+
+  useEffect(() => {
+    fetch('/houses')
+    .then(resp => {
+        if(resp.ok){
+            resp.json().then(house => setHouses(house))
+        }
+    })
+
+  },[])
+
+  function handleAddHouse(newHouse){
+      setHouses([...houses, newHouse])
+  }
   
   return (
     
@@ -43,7 +58,7 @@ function App() {
           <Home />
       </Route>
       <Route exact path="/sales">
-          <Sales />
+          <Sales  houses={houses}/>
       </Route>
       <Route exact path="/signup">
           <SignUpForm />
@@ -52,7 +67,7 @@ function App() {
         <LogIn />
       </Route>
       <Route exact path="/new_house">
-        <NewHouseForm />
+        <NewHouseForm addNewHouse={handleAddHouse}/>
       </Route>
       <br/>
       <Footer />

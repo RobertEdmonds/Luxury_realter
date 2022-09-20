@@ -1,6 +1,7 @@
 .newHouseForm{
     margin-top: 6.2rem;
     text-align: center;
+    max-height: 28rem;
 }
 .newHouseLabel{
     margin: 1rem;
@@ -13,4 +14,12 @@
 .newHouseCheckBox{
     font-weight: bold;
     margin: 1rem;
+}
+.newHouseDescription{
+    font-weight: bold;
+    margin-top: 35rem;
+}
+.newHouseInputDescript{
+    width: 20rem;
+    height: 10rem;
 }
