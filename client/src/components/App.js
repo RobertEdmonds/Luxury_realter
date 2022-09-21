@@ -8,8 +8,10 @@ import Footer from './Footer';
 import SignUpForm from '../forms/SignUpForm';
 import LogIn from '../forms/LogIn';
 import NewHouseForm from '../forms/NewHouseForm';
+import Stories from './Stories';
 import {UserContext} from "../context/user.js";
 import {EmployeeContext} from "../context/Employee.js";
+
 
 
 function App() {
@@ -210,6 +212,9 @@ function App() {
       </Route>
       <Route exact path="/sales">
           <Sales  houses={houses} handleEditHouse={handleEditHouse}/>
+      </Route>
+      <Route exact path="/stories">
+          <Stories />
       </Route>
       <Route exact path="/signup">
           <SignUpForm />

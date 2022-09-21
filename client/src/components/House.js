@@ -8,9 +8,10 @@ function House({house, toggle, setDisplayFormat, setBackgroundImage, backgroundI
 
     const displayHouse = house.map(home => {
 
-        const displayPictures = home.pictures.map(image => {      
+        const displayPictures = home.pictures.map(image => { 
+           
                     return(
-                        <img key={image.id} className="clickImage" src={image.picture_url} alt={image.order_number} onClick={() => setBackgroundImage(image.picture_url)}/>
+                        <img key={image.id} className="clickImage" src={image.picture_url} alt={image.order_number} onMouseOver={() => setBackgroundImage(image.picture_url)}/>
                     )})
             
         const displayMarket = () => {
@@ -103,6 +104,7 @@ function House({house, toggle, setDisplayFormat, setBackgroundImage, backgroundI
         setDisplayFormat("salesDisplay")
         toggle(false)
     }
+    console.log(backgroundImage)
     if(!!employee){
         return(
             <div className='houseDisplay'>

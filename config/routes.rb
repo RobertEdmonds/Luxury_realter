@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stories, only: [:index]
   # resources :employees
   resources :pictures
   resources :houses, only: [:index, :create, :update]
