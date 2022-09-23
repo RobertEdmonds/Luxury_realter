@@ -1,5 +1,5 @@
 class House < ApplicationRecord
-    has_many :pictures
+    has_many :pictures, dependent: :destroy
 
     validates :address, presence: true, uniqueness: true
     validates :city, presence: true

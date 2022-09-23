@@ -8,15 +8,16 @@ import Footer from './Footer';
 import SignUpForm from '../forms/SignUpForm';
 import LogIn from '../forms/LogIn';
 import NewHouseForm from '../forms/NewHouseForm';
+import House from './House';
 import Stories from './Stories';
 import {UserContext} from "../context/user.js";
 import {EmployeeContext} from "../context/Employee.js";
 
 
 
-function App() {
-  const {setCustomer} = useContext(UserContext)
-  const {setEmployee} = useContext(EmployeeContext)
+function App(){
+  const {setCustomer, customer} = useContext(UserContext)
+  const {setEmployee, employee} = useContext(EmployeeContext)
   const [houses, setHouses] = useState([])
   const [ editing, setEditing ] = useState(false)
   const [ onMarket, setOnMarket ] = useState(false)
@@ -35,6 +36,10 @@ function App() {
   const [ description, setDescription ] = useState("")
   const [ error, setError ] = useState([])
   const [ houseId, setHouseId ] = useState(0)
+  const [houseInfo, setHouseInfo] = useState([])
+  const [toggle, setToggle] = useState(false)
+  const [backgroundImage, setBackgroundImage] = useState("")
+  // const [displayFormat, setDisplayFormat] = useState("salesDisplay")
   const history = useHistory()
 
   useEffect(() => {
@@ -83,7 +88,6 @@ function App() {
       condo,
       description
   }
-  console.log(formData)
   fetch(`/houses/${houseId}`, {
       method: "PATCH",
       headers: {
@@ -167,7 +171,6 @@ function App() {
         condo,
         description
     }
-    console.log(formData)
     fetch("/houses", {
         method: "POST",
         headers: {
@@ -201,6 +204,31 @@ function App() {
   function handleAddHouse(newHouse){
       setHouses([...houses, newHouse])
   }
+
+  function handleShowDelete(id){
+    const updatedItem = houses.filter(house => house.id !== id)
+    setHouses(updatedItem)
+  }
+
+  function handleShowHouse(house){
+    if(!customer && !employee){
+        history.push("/login")
+    }else{
+        fetch(`houses/${house.id}`)
+        .then(resp => {
+            if(resp.ok){
+                resp.json().then(house => {
+                    setHouseInfo([house])
+                    setToggle(true)
+                    setHouseId(house.id)
+                    setBackgroundImage(house.pictures[0].picture_url)
+                    history.push(`/house/${house.id}`)
+                })
+            }else{
+                resp.json().then(err => console.log(err))
+            }
+        })
+      }}
   
   return (
     
@@ -211,7 +239,10 @@ function App() {
           <Home />
       </Route>
       <Route exact path="/sales">
-          <Sales  houses={houses} handleEditHouse={handleEditHouse}/>
+          <Sales  houses={houses} handleEditHouse={handleEditHouse} handleShowDelete={handleShowDelete} handleShowHouse={handleShowHouse} setToggle={setToggle} toggle={toggle} />
+      </Route>
+      <Route exact path={`/house/${houseId}`}>
+          <House house={houseInfo} handleShowDelete={handleShowDelete} toggle={toggle} setToggle={setToggle} setBackgroundImage={setBackgroundImage} backgroundImage={backgroundImage} houseId={houseId}/>
       </Route>
       <Route exact path="/stories">
           <Stories />
