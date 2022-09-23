@@ -14,28 +14,28 @@ function Stories(){
       },[])
 
     return(
-        <>
+        <div className="storyRow">
             {stories.map(story => {
                 if(story.second_name === undefined){
                     return(
-                        <div key={story.id} style={{marginTop: "6.2rem"}}>
+                        <div key={story.id} className="storyColumn">
                             <img className="storiesImage" src={story.picture_url} alt={story.picture_url}/>
-                            <h1>{story.name}</h1>
-                            <p>{story.description}</p>
+                            <h3 style={{color: "navy", marginBottom: "0rem"}}>{story.name}</h3>
+                            <p className="storyDescription">{story.description}</p>
                         </div>
                     )
                 }else{
                     return(
-                        <div key={story.id} style={{marginTop: "6.2rem"}}>
+                        <div key={story.id} className="storyColumn">
                             <img className="storiesImage" src={story.picture_url} alt={story.picture_url}/>
-                            <h1>{story.name} & {story.second_name}</h1>
-                            <p>{story.description}</p>
+                            <h3 style={{color: "navy", marginBottom: "0rem"}}>{story.name} & {story.second_name}</h3>
+                            <p className="storyDescription">{story.description}</p>
                         </div>
                     )
                 }
             })
             }
-        </>
+        </div>
     )
 }
 

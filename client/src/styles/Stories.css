@@ -1,6 +1,26 @@
 .storiesImage{
-    max-width: 10rem;
+    max-width: 5rem;
     max-height: 10rem;
     float: left;
     border-radius: 50%;
+}
+.storyRow{
+    width: 100%;
+    margin-top: 6.2rem;
+    text-align: center;
+    margin-left: 3rem;
+}
+.storyRow:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.storyColumn{
+    float: left;
+    width: 31%;
+}
+.storyDescription{
+    width: 25rem;
+    margin-left: 5rem;
+    margin-top: .3rem;
 }
