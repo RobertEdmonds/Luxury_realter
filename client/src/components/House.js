@@ -10,7 +10,6 @@ function House({house, setBackgroundImage, backgroundImage, handleShowDelete}){
 
     const displayHouse = house.map(home => {
         const displayPictures = home.pictures.map(image => { 
-           
                     return(
                         <img key={image.id} className="clickImage" src={image.picture_url} alt={image.order_number} onClick={() => setBackgroundImage(image.picture_url)}/>
                     )})
@@ -58,7 +57,27 @@ function House({house, setBackgroundImage, backgroundImage, handleShowDelete}){
                 setBackgroundImage(showPhoto.picture_url)
             }
         }
-    
+        if(home.pictures.length === 1){
+            return(
+                <div key={home.id}>
+                    <div style={{backgroundImage: `url(${backgroundImage})`}} className="houseImageBackground">
+                    </div>
+                    <div className='houseDescription'>
+                        <h2>$ {home.price.toLocaleString()}</h2>
+                        <h4>{home.address}</h4>
+                        <h4>{home.city}, {home.state} {home.zip_code}</h4>
+                        {displayMarket()}
+                        <p>SQFT: {home.sqft}</p>
+                        <p>Rooms: {home.rooms}</p>
+                        <p>Baths: {home.bathrooms}</p>
+                        <p>Pool: {home.pool.toString()}</p>
+                        <p>Waterfront: {home.waterfront.toString()}</p>
+                        <p>Condo: {home.condo.toString()}</p>
+                        <p className="description">{home.description}</p>
+                    </div>
+                </div>
+            )
+        }else{
         return(
             <div key={home.id}>
                 <div style={{backgroundImage: `url(${backgroundImage})`}} className="houseImageBackground">
@@ -80,8 +99,8 @@ function House({house, setBackgroundImage, backgroundImage, handleShowDelete}){
                     <p className="description">{home.description}</p>
                 </div>
             </div>
-    
-    )})
+        
+    )}})
     function handleToggle(){
         // setToggle(false)
         history.push("/sales")
