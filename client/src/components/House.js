@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import {EmployeeContext} from '../context/Employee.js';
 import '../styles/House.css';
 
-function House({house, setBackgroundImage, backgroundImage, handleShowDelete}){
+function House({house, setBackgroundImage, backgroundImage, handleShowDelete, handleEditPhotos}){
     const {employee} = useContext(EmployeeContext)
     const [ error, setError ] = useState("")
     const history = useHistory()
@@ -78,33 +78,34 @@ function House({house, setBackgroundImage, backgroundImage, handleShowDelete}){
                 </div>
             )
         }else{
-        return(
-            <div key={home.id}>
-                <div style={{backgroundImage: `url(${backgroundImage})`}} className="houseImageBackground">
-                    <button className='leftArrowButton' onClick={() => handleLeftClick(backgroundImage)}><img className='leftArrow' src='https://cdn-icons-png.flaticon.com/512/271/271220.png' alt='Left Arrow'/></button>
-                    <button className='rightArrowButton' onClick={() => handleRightClick(backgroundImage)}><img className='rightArrow' src='https://cdn-icons-png.flaticon.com/512/60/60758.png' alt='Right Arrow'/></button>
-                    {displayPictures}
+            return(
+                <div key={home.id}>
+                    <div style={{backgroundImage: `url(${backgroundImage})`}} className="houseImageBackground">
+                        <button className='leftArrowButton' onClick={() => handleLeftClick(backgroundImage)}><img className='leftArrow' src='https://cdn-icons-png.flaticon.com/512/271/271220.png' alt='Left Arrow'/></button>
+                        <button className='rightArrowButton' onClick={() => handleRightClick(backgroundImage)}><img className='rightArrow' src='https://cdn-icons-png.flaticon.com/512/60/60758.png' alt='Right Arrow'/></button>
+                        {displayPictures}
+                    </div>
+                    <div className='houseDescription'>
+                        <h2>$ {home.price.toLocaleString()}</h2>
+                        <h4>{home.address}</h4>
+                        <h4>{home.city}, {home.state} {home.zip_code}</h4>
+                        {displayMarket()}
+                        <p>SQFT: {home.sqft}</p>
+                        <p>Rooms: {home.rooms}</p>
+                        <p>Baths: {home.bathrooms}</p>
+                        <p>Pool: {home.pool.toString()}</p>
+                        <p>Waterfront: {home.waterfront.toString()}</p>
+                        <p>Condo: {home.condo.toString()}</p>
+                        <p className="description">{home.description}</p>
+                    </div>
                 </div>
-                <div className='houseDescription'>
-                    <h2>$ {home.price.toLocaleString()}</h2>
-                    <h4>{home.address}</h4>
-                    <h4>{home.city}, {home.state} {home.zip_code}</h4>
-                    {displayMarket()}
-                    <p>SQFT: {home.sqft}</p>
-                    <p>Rooms: {home.rooms}</p>
-                    <p>Baths: {home.bathrooms}</p>
-                    <p>Pool: {home.pool.toString()}</p>
-                    <p>Waterfront: {home.waterfront.toString()}</p>
-                    <p>Condo: {home.condo.toString()}</p>
-                    <p className="description">{home.description}</p>
-                </div>
-            </div>
-        
-    )}})
+        )}
+    })
     function handleToggle(){
         // setToggle(false)
         history.push("/sales")
     }
+
 
     function handleHouseDelete(house){
         fetch(`/houses/${house[0].id}`, {
@@ -126,7 +127,7 @@ function House({house, setBackgroundImage, backgroundImage, handleShowDelete}){
             <div className='houseDisplay'>
                 {displayHouse}
                 <div>
-                    <span style={{display: "inline-flex"}}><button className="mainButton" onClick={() => handleToggle()}>View More Homes</button><h1 style={{marginLeft: "1rem", marginRight: "1rem"}}>/</h1><button className="mainButton">Edit Photos</button><h1 style={{marginLeft: "1rem", marginRight: "1rem"}}>/</h1><button className='mainButton' onClick={() => handleHouseDelete(house)}>Delete</button></span>
+                    <span style={{display: "inline-flex"}}><button className="mainButton" onClick={() => handleToggle()}>View More Homes</button><h1 style={{marginLeft: "1rem", marginRight: "1rem"}}>/</h1><button className="mainButton" onClick={() => handleEditPhotos(house[0].id)}>Edit Photos</button><h1 style={{marginLeft: "1rem", marginRight: "1rem"}}>/</h1><button className='mainButton' onClick={() => handleHouseDelete(house)}>Delete</button></span>
                 </div>
                 <h3>{error}</h3>
             </div>

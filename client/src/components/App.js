@@ -12,6 +12,7 @@ import House from './House';
 import Stories from './Stories';
 import {UserContext} from "../context/user.js";
 import {EmployeeContext} from "../context/Employee.js";
+import EditPhoto from '../forms/EditPhoto';
 
 
 
@@ -39,7 +40,7 @@ function App(){
   const [houseInfo, setHouseInfo] = useState([])
   const [toggle, setToggle] = useState(false)
   const [backgroundImage, setBackgroundImage] = useState("")
-  // const [displayFormat, setDisplayFormat] = useState("salesDisplay")
+  const [ houseImages, setHouseImages ] = useState([])
   const history = useHistory()
 
   useEffect(() => {
@@ -219,7 +220,6 @@ function App(){
             if(resp.ok){
                 resp.json().then(house => {
                     setHouseInfo([house])
-                    setToggle(true)
                     setHouseId(house.id)
                     setBackgroundImage(house.pictures[0].picture_url)
                     history.push(`/house/${house.id}`)
@@ -229,7 +229,29 @@ function App(){
             }
         })
       }}
-  
+
+      function handleEditPhotos(houseId){
+        fetch(`/houses/${houseId}`)
+        .then(resp => resp.json())
+        .then(house => {
+          setHouseImages(house.pictures)
+        history.push(`/edit_photos/${houseId}`)
+        })
+      }
+
+      function handleAddEditPhoto(item){
+        const house = houses.filter(house => house.id === item.house_id)
+        const images = house[0].pictures
+        const updatedItem = images.map(image => {
+          if(image.id === item.id){
+            return(item)
+          }else{
+            return(image)
+          }
+        })
+        setHouseImages(updatedItem)
+      }
+      console.log(houseImages)
   return (
     
     <div>
@@ -242,7 +264,10 @@ function App(){
           <Sales  houses={houses} handleEditHouse={handleEditHouse} handleShowDelete={handleShowDelete} handleShowHouse={handleShowHouse} setToggle={setToggle} toggle={toggle} />
       </Route>
       <Route exact path={`/house/${houseId}`}>
-          <House house={houseInfo} handleShowDelete={handleShowDelete} toggle={toggle} setToggle={setToggle} setBackgroundImage={setBackgroundImage} backgroundImage={backgroundImage} houseId={houseId}/>
+          <House house={houseInfo} handleShowDelete={handleShowDelete} setBackgroundImage={setBackgroundImage} backgroundImage={backgroundImage} houseId={houseId} handleEditPhotos={handleEditPhotos}/>
+      </Route>
+      <Route exact path={`/edit_photos/${houseId}`}>
+        <EditPhoto houseId={houseId} images={houseImages} handleAddEditPhoto={handleAddEditPhoto}/>
       </Route>
       <Route exact path="/stories">
           <Stories />
