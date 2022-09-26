@@ -4,7 +4,7 @@ class House < ApplicationRecord
     validates :address, presence: true, uniqueness: true
     validates :city, presence: true
     validates :state, presence: true, length: {minimum: 3}
-    validates :zip_code, presence: true, length: {is: 5}, numericality: {only_integer: true}
+    validates :zip_code, presence: true, length: {minimum: 4}
     validates :rooms, presence: true, numericality: {only_integer: true}
     validates :bathrooms, presence: true, numericality: {only_integer: true}
     validates :sqft, presence: true, numericality: {only_integer: true}

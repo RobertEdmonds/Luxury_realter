@@ -239,10 +239,12 @@ function App(){
         })
       }
 
-      function handleAddEditPhoto(item){
-        const house = houses.filter(house => house.id === item.house_id)
-        const images = house[0].pictures
-        const updatedItem = images.map(image => {
+      function handleAddPic(image){
+        setHouseImages([...houseImages, image])
+      }
+
+      function handleAddEditPhoto(item, changeOldImage){
+        const updatedItem = changeOldImage.map(image => {
           if(image.id === item.id){
             return(item)
           }else{
@@ -251,7 +253,7 @@ function App(){
         })
         setHouseImages(updatedItem)
       }
-      console.log(houseImages)
+      
   return (
     
     <div>
@@ -267,7 +269,7 @@ function App(){
           <House house={houseInfo} handleShowDelete={handleShowDelete} setBackgroundImage={setBackgroundImage} backgroundImage={backgroundImage} houseId={houseId} handleEditPhotos={handleEditPhotos}/>
       </Route>
       <Route exact path={`/edit_photos/${houseId}`}>
-        <EditPhoto houseId={houseId} images={houseImages} handleAddEditPhoto={handleAddEditPhoto}/>
+        <EditPhoto houseId={houseId} images={houseImages} handleAddEditPhoto={handleAddEditPhoto} handleAddPic={handleAddPic}/>
       </Route>
       <Route exact path="/stories">
           <Stories />

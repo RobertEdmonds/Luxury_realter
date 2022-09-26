@@ -1,5 +1,10 @@
 class PicturesController < ApplicationController
 
+    def create 
+        pic = Picture.create!(photo_params)
+        render json: pic, status: :created
+    end
+
     def update 
         @photo = Picture.find(params[:id])
         house = House.find_by(id: params[:house_id])
@@ -12,6 +17,6 @@ class PicturesController < ApplicationController
     private 
 
     def photo_params 
-        params.permit(:picture_url, :house_id, :order_number)
+        params.permit(:id, :picture_url, :house_id, :order_number)
     end
 end

@@ -1,13 +1,14 @@
 import {useState} from 'react'
 import '../styles/EditPhoto.css'
 
-function EditPhoto({houseId, images, handleAddEditPhoto}){
+function EditPhoto({houseId, images, handleAddEditPhoto, handleAddPic}){
     const [picture, setPicture] = useState("https://freesvg.org/img/1410828243.png")
     const [order, setOrder] = useState("1")
     const [toggle, setToggle] = useState(false)
     const [photoId, setPhotoId] = useState(1)
+    const [error, setError] = useState([])
 
-    const displayPhotos = images.map(image => {
+    const displayPhotos = images.sort((a, b) => a.order_number > b.order_number ? 1 : -1).map(image => {
         return(
             <img key={image.id} className="clickEditImage" src={image.picture_url} alt={image.order_number} onClick={() => editImage(image)} />
         )
@@ -27,7 +28,25 @@ function EditPhoto({houseId, images, handleAddEditPhoto}){
             order_number: parseInt(order),
             house_id: houseId
         }
-        console.log(formData)
+        fetch("/pictures", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData) 
+        })
+        .then(resp => {
+            if(resp.ok){
+                resp.json().then(pic => {
+                    handleAddPic(pic)
+                    setPicture("https://freesvg.org/img/1410828243.png")
+                    setOrder("1")
+                    setToggle(false)
+                })
+            }else{
+                resp.json().then(err => setError(err.errors))
+            }
+        })
     }
 
     function handleEditPhoto(e){
@@ -37,6 +56,15 @@ function EditPhoto({houseId, images, handleAddEditPhoto}){
             order_number: parseInt(order),
             house_id: houseId
         }
+        const findImage = images.filter(image => image.order_number === formData.order_number)
+        const newImage = images.filter(image => image.id === photoId)
+        const changeOldImage = images.map(image => {
+            if(image.id === findImage[0].id){
+                return {id: findImage[0].id, picture_url: findImage[0].picture_url, order_number: newImage[0].order_number }
+            }else{
+                return image
+            }
+        })
         fetch(`/pictures/${photoId}`, {
             method: "PATCH",
             headers: {
@@ -46,11 +74,19 @@ function EditPhoto({houseId, images, handleAddEditPhoto}){
         })
         .then(resp => {
             if(resp.ok){
-                resp.json().then(pic => handleAddEditPhoto(pic))
+                resp.json().then(pic => {
+                    handleAddEditPhoto(pic, changeOldImage)
+                    setPicture("https://freesvg.org/img/1410828243.png")
+                    setOrder("1")
+                    setPhotoId(1)
+                    setToggle(false)
+                })
+            }else{
+                resp.json().then(err => setError(err.errors))
             }
         })
     }
-
+    console.log(error)
     return(
         <div style={{textAlign: "center"}}>  
             <div>
