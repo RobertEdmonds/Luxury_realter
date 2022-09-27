@@ -2,6 +2,11 @@ class CustomersController < ApplicationController
     skip_before_action :authorize, only: :create
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity 
 
+    def index 
+        customers = Customer.all 
+        render json: customers, status: :ok
+    end
+
     def create
         customer = Customer.create!(customer_params)
         session[:customer_id] = customer.id 

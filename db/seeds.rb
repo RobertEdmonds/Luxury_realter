@@ -98,9 +98,9 @@ end
      Picture.create(picture_url: "https://dfjc3etzov2zz.cloudfront.net/wp-content/uploads/2022/04/20220326120311041559000000-o-753x500.jpg", house_id: @yard.shift, order_number: 7)
 end
 
-Employee.create!(email: "wendy@wendynoblerealtor.com", first_name: "Wendy", last_name: "Noble", phone_number: 2398497109, password: "Hello", password_confirmation: "Hello", employee_number: 100)
+Employee.create!(email: "WENDY@WENDYNOBLEREALTOR.COM", first_name: "WENDY", last_name: "NOBLE", phone_number: 2398497109, password: "Hello", password_confirmation: "Hello", employee_number: 100)
 
-Employee.create!(email: "bobby.edmonds89@gmail.com", first_name: "Bobby", last_name: "Edmonds", phone_number: 3039444747, password: "Hello", password_confirmation: "Hello", employee_number: 101)
+Employee.create!(email: "BOBBY.EDMONDS89@GMAIL.COM", first_name: "BOBBY", last_name: "EDMONDS", phone_number: 3039444747, password: "Hello", password_confirmation: "Hello", employee_number: 101)
 
 10.times do []
     Story.create(picture_url: 'https://freesvg.org/img/johnny_automatic_key.png', name: Faker::Name.unique.name, second_name: Faker::Name.unique.name, description: "Great time buying a house! I normally hate this process. Not with Wendy, she made it fun and explained every detail. Very knowledgeable!")

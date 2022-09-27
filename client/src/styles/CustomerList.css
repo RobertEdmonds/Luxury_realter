@@ -1,0 +1,16 @@
+.custColumn{
+    float: left;
+    width: 21%;
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+    border-bottom: solid;
+}
+.custRow{
+    width: 100%;
+    text-align: center;
+}
+.custColumn:after{
+    content: "";
+    display: table;
+    clear: both;
+}

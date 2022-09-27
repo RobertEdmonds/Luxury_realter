@@ -18,7 +18,7 @@ function LogIn(){
         e.preventDefault()
         setLoading(false)
         const dataForm = {
-            email,
+            email: email.toUpperCase(),
             password
         }
         fetch("/login", {

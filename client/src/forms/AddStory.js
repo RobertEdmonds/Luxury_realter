@@ -33,63 +33,64 @@ function AddStory(){
     }
 
     return(
-        <>
-        <div style={{marginTop: "6.2rem", textAlign: "center"}}>
-            <img className="previewStoryImage" src={picture} alt="Pre-view"/>
-        </div>
-        <ul className="errorStyle">
+        <div style={{maxHeight: "40rem", textAlign: "center", width: "99rem"}}>
+            <div style={{marginTop: "6.2rem", textAlign: "center"}}>
+                <img className="previewStoryImage" src={picture} alt="Pre-view"/>
+            </div>
+            <br/>
+            <ul className="errorStyle">
                 {error.map(err => {
                     return(
                         <li key={err}>{err}</li>
                     )
                 })}
-        </ul>
-        <form style={{textAlign: "center"}} onSubmit={handleAddStory}>
-            <label className="labelStyle">
+            </ul>
+            <form style={{textAlign: "center"}} onSubmit={handleAddStory}>
+                <label className="labelStyle">
                 Picture
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="text"
-                    value={picture}
-                    onChange={(e) => setPicture(e.target.value.trim())}
-                />
-            </label>
-            <br/>
-            <label className="labelStyle">First Name
+                    <input
+                        className="inputStyle"
+                        type="text"
+                        value={picture}
+                        onChange={(e) => setPicture(e.target.value.trim())}
+                    />
+                </label>
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="text"
-                    value={nameOne}
-                    onChange={(e) => setNameOne(e.target.value)}
-                />
-            </label>
-            <br/>
-            <label className="labelStyle">Second Name
+                <label className="labelStyle">First Name
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="text"
+                        value={nameOne}
+                        onChange={(e) => setNameOne(e.target.value)}
+                    />
+                </label>
                 <br/>
-                <input
-                    className="inputStyle"
-                    type="text"
-                    value={nameTwo}
-                    onChange={(e) => setNameTwo(e.target.value)}
-                />
-            </label>
-            <br/>
-            <label className="newHouseDescription">
+                <label className="labelStyle">Second Name
+                <br/>
+                    <input
+                        className="inputStyle"
+                        type="text"
+                        value={nameTwo}
+                        onChange={(e) => setNameTwo(e.target.value)}
+                    />
+                </label>
+                <br/>
+                <label className="newHouseDescription">
                 Description
                 <br/>
-                <textarea
-                    className="newHouseInputDescript"
-                    type="text"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-            </label>
-            <br/>
-            <button className='mainButton' type='submit'>Add Story</button>    
-        </form>
-        </>
+                    <textarea
+                        className="newHouseInputDescript"
+                        type="text"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                </label>
+                <br/>
+                <button className='mainButton' type='submit'>Add Story</button>    
+            </form>
+        </div>
     )
 }
 

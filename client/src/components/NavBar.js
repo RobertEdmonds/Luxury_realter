@@ -98,12 +98,20 @@ function NavBar(){
                     Add Story
                 </NavLink>
                 <NavLink
+                    to="/customer_list"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Customer List
+                </NavLink>
+                <NavLink
                     to="/employee_info"
                     exact="true"
                     className="styleNavBar"
                     activeStyle={{color: "black"}}
                 >
-                    Employee {employee.first_name}!
+                    EMPLOYEE {employee.first_name}!
                 </NavLink>
                 <button className="buttonLogoutStyle" onClick={handleLogout}>
                     Log Out
@@ -144,7 +152,7 @@ function NavBar(){
                     className="styleNavBar"
                     activeStyle={{color: "black"}}
                 >
-                    Welcome {customer.first_name}!
+                    WELCOME {customer.first_name}!
                 </NavLink>
                 <button className="buttonLogoutStyle" onClick={handleLogout}>
                     Log Out

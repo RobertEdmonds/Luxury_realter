@@ -2,12 +2,14 @@ import React, {useContext, useState} from "react";
 import {EmployeeContext} from "../context/Employee.js";
 
 function EmployeeInfo(){
-    const {employee} = useContext(EmployeeContext)
+    const {employee, setEmployee} = useContext(EmployeeContext)
     const [email, setEmail] = useState(employee.email)
     const [firstName, setFirstName] = useState(employee.first_name)
     const [lastName, setLastName] = useState(employee.last_name)
     const [phone, setPhone] = useState(employee.phone_number)
     const [error, setError] = useState([])
+
+    console.log(employee)
 
     function handleEdit(e){
         e.preventDefault()
@@ -26,7 +28,7 @@ function EmployeeInfo(){
         })
         .then(resp => {
             if(resp.ok){
-                resp.json()
+                resp.json().then(worker => setEmployee(worker))
             }else{
                 resp.json(err => setError(err.errors))
             }
@@ -34,7 +36,7 @@ function EmployeeInfo(){
     }
 
     return(
-        <>
+        <div style={{marginTop: "6.2rem", maxHeight: "30rem"}}>
         <ul className="errorStyle">
                 {error.map(err => {
                     return(
@@ -42,7 +44,7 @@ function EmployeeInfo(){
                     )
                 })}
         </ul>
-        <div style={{textAlign: "center", marginTop: "6.2rem"}}>
+        <div style={{textAlign: "center"}}>
             <h1>E# {employee.employee_number}</h1>
             <form onSubmit={handleEdit}>
                 <label className="labelStyle">Email<span className="starStyle">*</span>
@@ -88,7 +90,7 @@ function EmployeeInfo(){
                 <button className="mainButton" type="submit">Update</button>
             </form>
         </div>
-        </>
+        </div>
     )
 }
 

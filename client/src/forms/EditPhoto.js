@@ -115,17 +115,22 @@ function EditPhoto({houseId, images, handleAddEditPhoto, handleAddPic, handlePho
             </div>
             <br/>
             <form onSubmit={toggle? handleEditPhoto: handleAddPhoto}>  
-                <label>
-                    Picture 
+                <label className="labelStyle">
+                    Picture Url:
+                    <br/>
                     <input
+                        className="inputStyle"
                         type="text"
                         value={picture}
                         onChange={(e) => setPicture(e.target.value)}
                     />
                 </label>
-                <label>
-                    Order 
+                <br/>
+                <label className="labelStyle">
+                    Order:
+                    <br/>
                     <select
+                        className="newHouseInput"
                         value={order}
                         onChange={(e) => setOrder(e.target.value)}
                     >

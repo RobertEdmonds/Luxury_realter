@@ -8,7 +8,7 @@ function SignUpForm(){
     const [email, setEmail] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState(0)
+    const [phoneNumber, setPhoneNumber] = useState('')
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
     const [loading, setLoading] = useState(false)
@@ -20,14 +20,13 @@ function SignUpForm(){
         setError([])
         setLoading(true)
         const dataForm = {
-            email,
-            first_name: firstName,
-            last_name: lastName,
-            phone_number: phoneNumber,
+            email: email.toUpperCase(),
+            first_name: firstName.toUpperCase(),
+            last_name: lastName.toUpperCase(),
+            phone_number: parseInt(phoneNumber),
             password,
             password_confirmation: passwordConfirm
         }
-        console.log(dataForm)
         fetch("/signup", {
             method: "POST",
             headers: {
@@ -47,37 +46,11 @@ function SignUpForm(){
                 setLastName("")
                 setPassword("")
                 setPasswordConfirm("")
-                setPhoneNumber(0)
+                setPhoneNumber('')
             }else{
                 resp.json().then(err => setError(err.errors))
             }
         })
-    }
-
-    const showPhoneNumber = () => {
-    if(phoneNumber === 0){
-        return (
-            <label className="labelStyle">Phone Number<span className="starStyle">*</span>
-                <br/>
-                <input
-                    className="inputStyle"
-                    type="text"
-                    onChange={(e) => setPhoneNumber(e.target.value.trim())}
-                />
-            </label>
-            )
-        }else{
-            return(
-            <label className="labelStyle">Phone Number<span className="starStyle">*</span>
-                    <br/>
-                    <input
-                        className="inputStyle"
-                        type="tel"
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value.trim())}
-                    />
-                </label>
-        )}
     }
 
     function transferLogin(){
@@ -125,7 +98,15 @@ function SignUpForm(){
                     />
                 </label>
                 <br/>
-                {showPhoneNumber()}
+                <label className="labelStyle">Phone Number<span className="starStyle">*</span>
+                    <br/>
+                    <input
+                        className="inputStyle"
+                        type="tel"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value.trim())}
+                    />
+                </label>
                 <br/>
                 <label className="labelStyle">Password<span className="starStyle">*</span>
                     <br/>

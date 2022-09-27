@@ -12,6 +12,7 @@ import House from './House';
 import Stories from './Stories';
 import AddStory from '../forms/AddStory';
 import EmployeeInfo from './EmployeeInfo';
+import CustomerList from './CustomerList';
 import {UserContext} from "../context/user.js";
 import {EmployeeContext} from "../context/Employee.js";
 import EditPhoto from '../forms/EditPhoto';
@@ -260,9 +261,9 @@ function App(){
         const updatedItem = houseImages.filter(photo => photo.id !== id)
         setHouseImages(updatedItem)
       }
-      
+  
+  if(!!employee){
   return (
-    
     <div>
       <Header />
       <br/>
@@ -293,13 +294,44 @@ function App(){
       <Route exact path="/employee_info">
         <EmployeeInfo />
       </Route>
+      <Route exact path="/customer_list">
+        <CustomerList />
+      </Route>
       <Route exact path="/new_house">
         <NewHouseForm handleHouseForm={editing? handleEditNewHouse : handleAddNewHouse} setOnMarket={setOnMarket} onMarket={onMarket} setUnderContract={setUnderContract} underContract={underContract} pool={pool} setPool={setPool} waterfront={waterfront} setWaterfront={setWaterfront} condo={condo} setCondo={setCondo} address={address} setAddress={setAddress} city={city} setCity={setCity} state={state} setState={setState} zip={zip} setZip={setZip} rooms={rooms} setRooms={setRooms} bathrooms={bathrooms} setBathrooms={setBathrooms} sqft={sqft} setSqft={setSqft} price={price} setPrice={setPrice} description={description} setDescription={setDescription} error={error} />
       </Route>
       <br/>
       <Footer />
     </div>
-  );
+  )
+  }else{
+    return(
+      <div>
+      <Header />
+      <br/>
+      <Route exact path="/">
+          <Home />
+      </Route>
+      <Route exact path="/sales">
+          <Sales  houses={houses} handleEditHouse={handleEditHouse} handleShowDelete={handleShowDelete} handleShowHouse={handleShowHouse} setToggle={setToggle} toggle={toggle} />
+      </Route>
+      <Route exact path={`/house/${houseId}`}>
+          <House house={houseInfo} handleShowDelete={handleShowDelete} setBackgroundImage={setBackgroundImage} backgroundImage={backgroundImage} houseId={houseId} handleEditPhotos={handleEditPhotos}/>
+      </Route>
+      <Route exact path="/stories">
+          <Stories />
+      </Route>
+      <Route exact path="/signup">
+          <SignUpForm />
+      </Route>
+      <Route exact path="/login">
+        <LogIn />
+      </Route>
+      <br/>
+      <Footer />
+    </div>
+    )
+  }
 }
 
 export default App;
