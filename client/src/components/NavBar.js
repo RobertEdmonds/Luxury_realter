@@ -98,7 +98,7 @@ function NavBar(){
                     Add Story
                 </NavLink>
                 <NavLink
-                    to="/customer_info"
+                    to="/employee_info"
                     exact="true"
                     className="styleNavBar"
                     activeStyle={{color: "black"}}

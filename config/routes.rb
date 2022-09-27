@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :stories, only: [:index, :create]
-  # resources :employees
   resources :pictures, only: [:update, :create, :destroy]
   resources :houses
   resources :home_images, only: [:index]
@@ -9,5 +8,6 @@ Rails.application.routes.draw do
   get '/me', to: 'customers#show'
   post '/login', to: 'sessions#create'
   delete '/logout', to: "sessions#destroy"
+  patch "/employee_update", to: "employees#update"
 
 end

@@ -12,6 +12,12 @@ class EmployeesController < ApplicationController
         render json: current_employee
     end
 
+    def update
+        employee = Employee.find(session[:employee_id])
+        employee.update(employee_params)
+        render json: employee, status: :created 
+    end
+
     private 
 
     def employee_params 
