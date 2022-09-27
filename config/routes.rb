@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
   patch "/employee_update", to: "employees#update"
   get "/customers", to: "customers#index"
+  post "/employee", to: "employees#create"
 
 end

@@ -16,6 +16,7 @@ import CustomerList from './CustomerList';
 import {UserContext} from "../context/user.js";
 import {EmployeeContext} from "../context/Employee.js";
 import EditPhoto from '../forms/EditPhoto';
+import AddEmployee from '../forms/AddEmployee';
 
 
 
@@ -296,6 +297,9 @@ function App(){
       </Route>
       <Route exact path="/customer_list">
         <CustomerList />
+      </Route>
+      <Route exact path="/add_employee">
+        <AddEmployee />
       </Route>
       <Route exact path="/new_house">
         <NewHouseForm handleHouseForm={editing? handleEditNewHouse : handleAddNewHouse} setOnMarket={setOnMarket} onMarket={onMarket} setUnderContract={setUnderContract} underContract={underContract} pool={pool} setPool={setPool} waterfront={waterfront} setWaterfront={setWaterfront} condo={condo} setCondo={setCondo} address={address} setAddress={setAddress} city={city} setCity={setCity} state={state} setState={setState} zip={zip} setZip={setZip} rooms={rooms} setRooms={setRooms} bathrooms={bathrooms} setBathrooms={setBathrooms} sqft={sqft} setSqft={setSqft} price={price} setPrice={setPrice} description={description} setDescription={setDescription} error={error} />

@@ -106,6 +106,14 @@ function NavBar(){
                     Customer List
                 </NavLink>
                 <NavLink
+                    to="/add_employee"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Add Employee
+                </NavLink>
+                <NavLink
                     to="/employee_info"
                     exact="true"
                     className="styleNavBar"
