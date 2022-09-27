@@ -74,6 +74,14 @@ function NavBar(){
                     Buy A Home 
                 </NavLink>
                 <NavLink
+                    to="/new_house"
+                    exact="true"
+                    className="styleNavBar"
+                    activeStyle={{color: "black"}}
+                >
+                    Add House
+                </NavLink>
+                <NavLink
                     to="/stories"
                     exact="true"
                     className="styleNavBar"
@@ -82,12 +90,12 @@ function NavBar(){
                     Success Stories
                 </NavLink>
                 <NavLink
-                    to="/new_house"
+                    to="/new_story"
                     exact="true"
                     className="styleNavBar"
                     activeStyle={{color: "black"}}
                 >
-                    Add House
+                    Add Story
                 </NavLink>
                 <NavLink
                     to="/customer_info"

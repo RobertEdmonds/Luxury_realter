@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :stories, only: [:index]
+  resources :stories, only: [:index, :create]
   # resources :employees
-  resources :pictures, only: [:update, :create]
+  resources :pictures, only: [:update, :create, :destroy]
   resources :houses
   resources :home_images, only: [:index]
   get '/employee', to: 'employees#show'

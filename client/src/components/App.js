@@ -10,6 +10,7 @@ import LogIn from '../forms/LogIn';
 import NewHouseForm from '../forms/NewHouseForm';
 import House from './House';
 import Stories from './Stories';
+import AddStory from '../forms/AddStory';
 import {UserContext} from "../context/user.js";
 import {EmployeeContext} from "../context/Employee.js";
 import EditPhoto from '../forms/EditPhoto';
@@ -253,6 +254,11 @@ function App(){
         })
         setHouseImages(updatedItem)
       }
+
+      function handlePhotoDelete(id){
+        const updatedItem = houseImages.filter(photo => photo.id !== id)
+        setHouseImages(updatedItem)
+      }
       
   return (
     
@@ -269,10 +275,13 @@ function App(){
           <House house={houseInfo} handleShowDelete={handleShowDelete} setBackgroundImage={setBackgroundImage} backgroundImage={backgroundImage} houseId={houseId} handleEditPhotos={handleEditPhotos}/>
       </Route>
       <Route exact path={`/edit_photos/${houseId}`}>
-        <EditPhoto houseId={houseId} images={houseImages} handleAddEditPhoto={handleAddEditPhoto} handleAddPic={handleAddPic}/>
+        <EditPhoto houseId={houseId} images={houseImages} handleAddEditPhoto={handleAddEditPhoto} handleAddPic={handleAddPic} handlePhotoDelete={handlePhotoDelete}/>
       </Route>
       <Route exact path="/stories">
           <Stories />
+      </Route>
+      <Route exact path="/new_story">
+          <AddStory />
       </Route>
       <Route exact path="/signup">
           <SignUpForm />

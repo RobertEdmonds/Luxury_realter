@@ -16,7 +16,7 @@ function Stories(){
     return(
         <div className="storyRow">
             {stories.map(story => {
-                if(story.second_name === undefined){
+                if(story.second_name === ""){
                     return(
                         <div key={story.id} className="storyColumn">
                             <img className="storiesImage" src={story.picture_url} alt={story.picture_url}/>

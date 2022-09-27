@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import '../styles/EditPhoto.css'
 
-function EditPhoto({houseId, images, handleAddEditPhoto, handleAddPic}){
+function EditPhoto({houseId, images, handleAddEditPhoto, handleAddPic, handlePhotoDelete}){
     const [picture, setPicture] = useState("https://freesvg.org/img/1410828243.png")
     const [order, setOrder] = useState("1")
     const [toggle, setToggle] = useState(false)
@@ -86,6 +86,23 @@ function EditPhoto({houseId, images, handleAddEditPhoto, handleAddPic}){
             }
         })
     }
+
+    function handleDeletePhoto(id){
+        fetch(`/pictures/${id}`, {
+            method: 'DELETE'
+        })
+        .then(resp => {
+            if(resp.ok){
+                handlePhotoDelete(id)
+                setPicture("https://freesvg.org/img/1410828243.png")
+                setOrder("1")
+                setPhotoId(1)
+                setToggle(false)
+            }else{
+                resp.json().then(err => setError(err.error))
+            }
+        })
+    }
     console.log(error)
     return(
         <div style={{textAlign: "center"}}>  
@@ -124,6 +141,7 @@ function EditPhoto({houseId, images, handleAddEditPhoto, handleAddPic}){
                 <br/>
                 <button type="submit" className="mainButton">{toggle? "Edit" : "Add"}</button>
             </form>
+            {toggle? <button className="mainButton" onClick={() => handleDeletePhoto(photoId)}>Delete</button> : <div></div>}
         </div>
     )
 }

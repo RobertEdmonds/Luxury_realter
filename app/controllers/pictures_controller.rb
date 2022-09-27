@@ -14,6 +14,12 @@ class PicturesController < ApplicationController
         render json: @photo, status: :created 
     end
 
+    def destroy 
+        pic = Picture.find(params[:id])
+        pic.destroy
+        head :no_content
+    end
+
     private 
 
     def photo_params 
