@@ -138,7 +138,7 @@ function House({house, setBackgroundImage, backgroundImage, handleShowDelete, ha
             <div className='houseDisplay'>
                 {displayHouse}
                 <div>
-                    <span style={{display: "inline-flex"}}><button className="mainButton" onClick={() => handleToggle()}>View More Homes</button><h1 style={{marginLeft: "1rem", marginRight: "1rem"}}>/</h1><button className="mainButton">Schedule Viewing</button></span>
+                    <button className="mainButton" onClick={() => handleToggle()}>View More Homes</button>
                 </div>
             </div>
         )
