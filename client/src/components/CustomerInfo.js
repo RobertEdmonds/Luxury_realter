@@ -1,12 +1,12 @@
 import React, {useContext, useState} from "react";
-import {EmployeeContext} from "../context/Employee.js";
+import {UserContext} from '../context/user.js'
 
-function EmployeeInfo(){
-    const {employee, setEmployee} = useContext(EmployeeContext)
-    const [email, setEmail] = useState(employee.email)
-    const [firstName, setFirstName] = useState(employee.first_name)
-    const [lastName, setLastName] = useState(employee.last_name)
-    const [phone, setPhone] = useState(employee.phone_number)
+function CustomerInfo(){
+    const {setCustomer, customer} = useContext(UserContext)
+    const [email, setEmail] = useState(customer.email)
+    const [firstName, setFirstName] = useState(customer.first_name)
+    const [lastName, setLastName] = useState(customer.last_name)
+    const [phone, setPhone] = useState(customer.phone_number)
     const [error, setError] = useState([])
 
     function handleEdit(e){
@@ -17,7 +17,7 @@ function EmployeeInfo(){
             last_name: lastName,
             phone_number: phone
         }
-        fetch(`/employee_update`,{
+        fetch(`/customer_update`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -26,7 +26,7 @@ function EmployeeInfo(){
         })
         .then(resp => {
             if(resp.ok){
-                resp.json().then(worker => setEmployee(worker))
+                resp.json().then(worker => setCustomer(worker))
             }else{
                 resp.json(err => setError(err.errors))
             }
@@ -43,7 +43,6 @@ function EmployeeInfo(){
                 })}
         </ul>
         <div style={{textAlign: "center"}}>
-            <h1>E# {employee.employee_number}</h1>
             <form onSubmit={handleEdit}>
                 <label className="labelStyle">Email<span className="starStyle">*</span>
                     <br/>
@@ -92,4 +91,4 @@ function EmployeeInfo(){
     )
 }
 
-export default EmployeeInfo
+export default CustomerInfo

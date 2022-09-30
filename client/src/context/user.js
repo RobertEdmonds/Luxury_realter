@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react";
+import { useHistory } from "react-router-dom";
 import {EmployeeContext} from '../context/Employee.js'
 
 const UserContext = React.createContext()
@@ -6,12 +7,14 @@ const UserContext = React.createContext()
 function UserProvider({children}){
     const[customer, setCustomer] = useState(null);
     const { setEmployee } = useContext(EmployeeContext)
+    const history = useHistory()
 
     function handleLogout(){
         fetch("/logout", { method: "DELETE" }).then((r) => {
             if (r.ok) {
               setEmployee(null)  
-              setCustomer(null);
+              setCustomer(null)
+              history.push('/');
             }
         })
     }

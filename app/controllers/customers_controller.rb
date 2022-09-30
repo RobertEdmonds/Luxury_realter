@@ -18,6 +18,12 @@ class CustomersController < ApplicationController
         render json: current_customer
     end
 
+    def update
+        customer = Customer.find(session[:customer_id])
+        customer.update(customer_params)
+        render json: customer, status: :created 
+    end
+
     private 
 
     def customer_params 

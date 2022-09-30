@@ -17,6 +17,7 @@ import {UserContext} from "../context/user.js";
 import {EmployeeContext} from "../context/Employee.js";
 import EditPhoto from '../forms/EditPhoto';
 import AddEmployee from '../forms/AddEmployee';
+import CustomerInfo from './CustomerInfo';
 
 
 
@@ -330,6 +331,9 @@ function App(){
       </Route>
       <Route exact path="/login">
         <LogIn />
+      </Route>
+      <Route exact path="/customer_info">
+        <CustomerInfo />
       </Route>
       <br/>
       <Footer />

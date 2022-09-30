@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: "sessions#destroy"
   patch "/employee_update", to: "employees#update"
+  patch "/customer_update", to: 'customers#update'
   get "/customers", to: "customers#index"
   post "/employee", to: "employees#create"
 
