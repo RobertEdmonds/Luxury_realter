@@ -9,7 +9,7 @@ function CustomerList(){
         .then(resp => resp.json())
         .then(person => setCustomerList(person))
     },[])
-    console.log(customerList)
+
     const displayCustomer = customerList.map(cust => {
         return(
             <div key={cust.id} className='custColumn'>

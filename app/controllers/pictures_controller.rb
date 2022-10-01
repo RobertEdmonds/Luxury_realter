@@ -5,13 +5,19 @@ class PicturesController < ApplicationController
         render json: pic, status: :created
     end
 
-    def update 
-        @photo = Picture.find(params[:id])
+    def update
         house = House.find_by(id: params[:house_id])
-        old_photo = house.pictures.find_by(order_number: params[:order_number])
-        old_photo.update(order_number: @photo[:order_number])
-        @photo.update!(photo_params)
-        render json: @photo, status: :created 
+        if house.pictures.find_by(order_number: params[:order_number]) == nil 
+            @photo = Picture.find(params[:id])
+            @photo.update!(photo_params)
+            render json: @photo, status: :created 
+        else 
+            @photo = Picture.find(params[:id])
+            old_photo = house.pictures.find_by(order_number: params[:order_number])
+            old_photo.update(order_number: @photo[:order_number])
+            @photo.update!(photo_params)
+            render json: @photo, status: :created 
+        end
     end
 
     def destroy 

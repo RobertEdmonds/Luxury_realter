@@ -59,7 +59,9 @@ function EditPhoto({houseId, images, handleAddEditPhoto, handleAddPic, handlePho
         const findImage = images.filter(image => image.order_number === formData.order_number)
         const newImage = images.filter(image => image.id === photoId)
         const changeOldImage = images.map(image => {
-            if(image.id === findImage[0].id){
+            if(findImage.length === 0){
+                return image
+            }else if(image.id === findImage[0].id){
                 return {id: findImage[0].id, picture_url: findImage[0].picture_url, order_number: newImage[0].order_number }
             }else{
                 return image
@@ -103,13 +105,20 @@ function EditPhoto({houseId, images, handleAddEditPhoto, handleAddPic, handlePho
             }
         })
     }
-    console.log(error)
+
     return(
         <div style={{textAlign: "center"}}>  
             <div>
                 {displayPhotos}
             </div>
             <br/>
+            <ul className="errorStyle">
+                {error.map(err => {
+                    return(
+                        <li key={err}>{err}</li>
+                    )
+                })}
+            </ul>
             <div>
                 <img className="previewImage" src={picture} alt="edit"/>
             </div>
