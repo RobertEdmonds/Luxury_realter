@@ -5,7 +5,7 @@ function CustomerList(){
     const [customerList, setCustomerList] = useState([])
 
     useEffect(() => {
-        fetch('customers')
+        fetch('/customers')
         .then(resp => resp.json())
         .then(person => setCustomerList(person))
     },[])

@@ -1,39 +1,39 @@
 import { useContext } from "react";
-import {EmployeeContext} from '../context/Employee.js';
-import '../styles/Sales.css'
+import { EmployeeContext } from "../context/Employee.js";
+import "../styles/Sales.css";
 
-function Sales({houses , handleEditHouse, handleShowHouse}){
-    const {employee} = useContext(EmployeeContext)
+const Sales = ({ houses, handleEditHouse, handleShowHouse }) => {
+  const { employee } = useContext(EmployeeContext);
+  const setRem = houses.length * 5;
 
-    const showHouses = houses.map(house => {
-         if(!!employee){
-            return(
-                    <div className="imageColumn">
-                        <img className="image" src={house.pictures[0].picture_url} alt={house.pictures[0].id}/>
-                        <br/>
-                        <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
-                        <button className="mainButton" onClick={() => handleEditHouse(house)}>Edit House</button>
-                    </div>
-            )
-        }else{
-            return(
-
-                    <div className="imageColumn">
-                        <img className="image" src={house.pictures[0].picture_url} alt={house.pictures[0].id}/>
-                        <br/>
-                        <button className="mainButton" onClick={() => handleShowHouse(house)}>Get More Info</button>
-                    </div>
-            )
-        }
-    })
-
-    const setRem = (showHouses.length * 5)
-
-    return(
-        <>
-             <div className="salesDisplay"  style={{minHeight: `${setRem.toString()}rem`}}>{showHouses}</div>
-         </>
-    )
-}
+  return (
+    <div
+      className="salesDisplay"
+      style={{ minHeight: `${setRem.toString()}rem` }}
+    >
+      {houses.map((house) => (
+        <div className="imageColumn">
+          <img
+            className="image"
+            src={house.pictures[0].picture_url}
+            alt={house.pictures[0].id}
+          />
+          <br />
+          <button className="mainButton" onClick={() => handleShowHouse(house)}>
+            Get More Info
+          </button>
+          {!!employee && (
+            <button
+              className="mainButton"
+              onClick={() => handleEditHouse(house)}
+            >
+              Edit House
+            </button>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default Sales;
