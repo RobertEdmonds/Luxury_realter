@@ -100,7 +100,9 @@ end
 
 Employee.create!(email: "WENDY@WENDYNOBLEREALTOR.COM", first_name: "WENDY", last_name: "NOBLE", phone_number: 2398497109, password: "Hello", password_confirmation: "Hello", employee_number: 100)
 
-Employee.create!(email: "BOBBY.EDMONDS89@GMAIL.COM", first_name: "BOBBY", last_name: "EDMONDS", phone_number: 3039444747, password: "Hello", password_confirmation: "Hello", employee_number: 101)
+Employee.create!(email: "BOBBYSTAR@GMAIL.COM", first_name: "BOBBY", last_name: "STAR", phone_number: 3039444747, password: "Hello", password_confirmation: "Hello", employee_number: 101)
+
+Customer.create!(email: "HOLLY@GMAIL.COM", first_name: "HOLLY", last_name: "STAR", phone_number: 3038888888, password: "Hello", password_confirmation: "Hello")
 
 10.times do []
     Story.create(picture_url: 'https://freesvg.org/img/johnny_automatic_key.png', name: Faker::Name.unique.name, second_name: Faker::Name.unique.name, description: "Great time buying a house! I normally hate this process. Not with Wendy, she made it fun and explained every detail. Very knowledgeable!")
