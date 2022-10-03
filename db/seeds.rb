@@ -85,7 +85,7 @@ end
 @bedroom = (1..15).to_a
 
 15.times do []
-     Picture.create(picture_url: "https://thespruce.com/thmb/2ZQoF_J0Do0Uic9emmTrLrRNey8=/2048x1366/filters:fill(auto,1)/walk-in-closet-storage-4172366-hero-740c4b90b7a94c2a98015f95e1270052.jpg", house_id: @bedroom.shift, order_number: 5)
+     Picture.create(picture_url: "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/Global_Assets/HDI-Closet-Right-Wall.jpg", house_id: @bedroom.shift, order_number: 5)
 end
 @id = (1..15).to_a
 

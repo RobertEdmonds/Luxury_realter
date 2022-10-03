@@ -39,3 +39,6 @@ This is an app for realtors to display the bear minimum for people that are not 
 * Customer 
     * email: holly@gmail.com
     * password: Hello
+
+## Links 
+* [Blog Link](https://medium.com/@bobby.edmonds89/automatically-updating-the-order-of-array-with-react-and-rails-8a286e6161f9)
