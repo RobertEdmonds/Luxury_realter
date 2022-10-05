@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :schedules
   resources :stories, only: [:index, :create]
   resources :pictures, only: [:update, :create, :destroy]
   resources :houses

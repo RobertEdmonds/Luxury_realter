@@ -1,5 +1,7 @@
 class House < ApplicationRecord
     has_many :pictures, dependent: :destroy
+    has_many :schedules, dependent: :destroy
+    has_many :customers, through: :schedules
 
     validates :address, presence: true, uniqueness: true
     validates :city, presence: true

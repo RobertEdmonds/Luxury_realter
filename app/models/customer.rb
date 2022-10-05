@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
     has_secure_password 
+    has_many :schedules, dependent: :destroy
+    has_many :houses, through: :schedules 
 
     validates :email, presence: true, uniqueness: true
     validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "Only allows letters" } 

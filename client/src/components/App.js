@@ -18,6 +18,7 @@ import { EmployeeContext } from "../context/Employee.js";
 import EditPhoto from "../forms/EditPhoto";
 import AddEmployee from "../forms/AddEmployee";
 import CustomerInfo from "./CustomerInfo";
+import MakeSchedule from "../forms/MakeSchedule";
 
 function App() {
   const { setCustomer, customer } = useContext(UserContext);
@@ -350,6 +351,9 @@ function App() {
               setDescription={setDescription}
               error={error}
             />
+          </Route>
+          <Route exact path={`/make_schedule/${houseId}`}>
+            <MakeSchedule houseId={houseId} />
           </Route>
         </>
       )}

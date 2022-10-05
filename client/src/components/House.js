@@ -153,6 +153,10 @@ function House({
     });
   }
 
+  function pushToSchedule(){
+    history.push(`/make_schedule/${house[0].id}`)
+  }
+
   return (
     <div className="houseDisplay">
       {displayHouse}
@@ -178,7 +182,15 @@ function House({
                 Delete
               </button>
               <h3>{error}</h3>
+              <h1 style={{ marginLeft: "1rem", marginRight: "1rem" }}>/</h1>
+              <button 
+                className="mainButton"
+                onClick={() => pushToSchedule()}
+                >
+                  Update Schedule
+                </button>
             </>
+
           )}
         </span>
       </div>
