@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
 
     def index 
         customers = Customer.all 
-        render json: customers, status: :ok
+        render json: customers, include: ['schedules', 'schedules.house'], status: :ok
     end
 
     def create

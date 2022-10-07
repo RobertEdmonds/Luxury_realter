@@ -4,5 +4,7 @@ class HouseSerializer < ActiveModel::Serializer
   has_many :pictures do
     object.pictures.order(:order_number)
   end
-
+  has_many :schedules do
+    object.schedules.order(:day)
+  end
 end

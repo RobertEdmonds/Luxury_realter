@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { EmployeeContext } from "../context/Employee.js";
+import { UserContext } from "../context/user.js";
 import "../styles/House.css";
 
 function House({
@@ -11,7 +12,11 @@ function House({
   handleEditPhotos,
 }) {
   const { employee } = useContext(EmployeeContext);
-  const [error, setError] = useState("");
+  const { customer } = useContext(UserContext);
+  const [error, setError] = useState([]);
+  const [day, setDay] = useState("Monday");
+  const [time, setTime] = useState("1");
+  const [schedule, setSchedule] = useState([]);
   const history = useHistory();
 
   const displayHouse = house.map((home) => {
@@ -133,12 +138,55 @@ function House({
           <p>Condo: {home.condo.toString()}</p>
           <p className="description">{home.description}</p>
         </div>
+        {!!employee && (
+          <>
+            <ul style={{ float: "left", fontWeight: "bold" }}>
+              Appointments
+              {home.schedules.map((appoint) => {
+                return (
+                  <li key={appoint.id}>
+                    {appoint.day} {appoint.time}pm
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        )}
       </div>
     );
   });
   function handleToggle() {
     history.push("/sales");
   }
+
+  const handleSchedule = (e) => {
+    e.preventDefault();
+    const formData = {
+      day: day,
+      time: parseInt(time),
+      house_id: house[0].id,
+      customer_id: customer.id,
+    };
+    fetch("/schedules", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((sch) => setSchedule(sch));
+      } else {
+        resp.json().then((err) => setError(err.errors));
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetch(`/show_schedule/${house[0].id}`)
+      .then((resp) => resp.json())
+      .then((sched) => setSchedule(sched));
+  }, [house]);
 
   function handleHouseDelete(house) {
     fetch(`/houses/${house[0].id}`, {
@@ -153,14 +201,74 @@ function House({
     });
   }
 
-  function pushToSchedule(){
-    history.push(`/make_schedule/${house[0].id}`)
-  }
-
   return (
     <div className="houseDisplay">
       {displayHouse}
       <div>
+        {!!schedule && !!customer ? (
+          <>
+            <h3>{customer.first_name} Scheduled For</h3>
+            <h3>
+              {schedule.day} at {schedule.time}pm
+            </h3>
+          </>
+        ) : (
+          <>
+            <ul className="errorStyle">
+              {error.map((err) => {
+                return <li key={err}>{err}</li>;
+              })}
+            </ul>
+            <form className="scheduleForm" onSubmit={handleSchedule}>
+              <label className="dayLabel">
+                Day:
+                <select
+                  className="daySelect"
+                  name="day"
+                  value={day}
+                  onChange={(e) => setDay(e.target.value)}
+                >
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
+                </select>
+              </label>
+              <label className="timeLabel">
+                Time in PM:
+                <select
+                  className="timeSelect"
+                  name="time"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </label>
+              <br />
+              <button
+                className="mainButton"
+                style={{ marginLeft: "7%" }}
+                type="submit"
+              >
+                Add Showing
+              </button>
+            </form>
+          </>
+        )}
+        <br />
         <span style={{ display: "inline-flex" }}>
           <button className="mainButton" onClick={() => handleToggle()}>
             View More Homes
@@ -182,15 +290,7 @@ function House({
                 Delete
               </button>
               <h3>{error}</h3>
-              <h1 style={{ marginLeft: "1rem", marginRight: "1rem" }}>/</h1>
-              <button 
-                className="mainButton"
-                onClick={() => pushToSchedule()}
-                >
-                  Update Schedule
-                </button>
             </>
-
           )}
         </span>
       </div>

@@ -49,3 +49,22 @@
     width: 20rem;
     display: inline;
 }
+.scheduleForm{
+    display: inline;
+    text-align: center;
+    margin-left: 7%;
+}
+.dayLabel{
+    font-weight: bold;
+    margin: 1rem;
+}
+.daySelect{
+    margin: 1rem;
+}
+.timeLabel{
+    font-weight: bold;
+    margin: 1rem;
+}
+.timeSelect{
+    margin: 1rem;
+}

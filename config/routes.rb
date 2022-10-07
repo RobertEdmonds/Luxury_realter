@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :schedules
+  get '/show_schedule/:id', to: "schedules#show_by_customer"
   resources :stories, only: [:index, :create]
   resources :pictures, only: [:update, :create, :destroy]
   resources :houses

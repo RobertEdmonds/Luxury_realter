@@ -1,13 +1,19 @@
 class SchedulesController < ApplicationController
 
     def index 
-        render json: Schedule.all, status: :okay 
+        render json: Schedule.all, status: :ok
     end
 
     def show 
-        house = House.find(params[:house_id])
+        house = House.find(params[:id])
         schedule = house.schedules 
-        render json: schedule, status: :okay 
+        render json: schedule, status: :ok 
+    end
+
+    def show_by_customer 
+        house = House.find(params[:id])
+        show = house.schedules.find_by(customer_id: session[:customer_id])
+        render json: show, status: :ok 
     end
 
     def create 
@@ -23,13 +29,13 @@ class SchedulesController < ApplicationController
     def destroy 
         schedule = Schedule.find(params[:id])
         schedule.destroy 
-        render :no_content
+        head :no_content
     end
 
     private 
 
     def schedule_params 
-        params.permit(:day, :time, :house_id, :customer_id)
+        params.permit(:id, :day, :time, :house_id, :customer_id)
     end
         
 end
