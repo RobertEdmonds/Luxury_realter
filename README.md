@@ -22,6 +22,7 @@ This is an app for realtors to display the bear minimum for people that are not 
     * will show the first picture of the house and have a button that will push person to login.
 * Buy a home signed in as customer
     * Customers can view the full view of houses with multiple pictures and house information.
+    * Sign up for a walk through.
 * Buy a home as employee
     * Employee is able to make updates to the house information, add photos to specific house and change the order of the photos.
 * Home displays basic information for the realtor, where they sale or list, also the background image changes every 10 seconds.
@@ -30,6 +31,7 @@ This is an app for realtors to display the bear minimum for people that are not 
     * form to add more success stories
     * form to add a new employee
     * view the list of customers
+        * Ability to view where the customer has applied to do a walk through and complete the walk through.
 * Ability to update personal information once clicking on customer or employee name.
 
 ## Login Credentials 

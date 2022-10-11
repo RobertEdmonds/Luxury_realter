@@ -12,7 +12,7 @@ const Sales = ({ houses, handleEditHouse, handleShowHouse }) => {
       style={{ minHeight: `${setRem.toString()}rem` }}
     >
       {houses.map((house) => (
-        <div className="imageColumn">
+        <div className="imageColumn" key={house.id}>
           <img
             className="image"
             src={house.pictures[0].picture_url}

@@ -13,7 +13,7 @@ function NavBar() {
       <div style={{ top: "3rem" }} className="NavBar">
         <NavLink
           to="/"
-          exact="true"
+          exact
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -21,7 +21,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/sales"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -29,7 +28,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/stories"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -37,7 +35,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/signup"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -45,7 +42,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/login"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -58,7 +54,7 @@ function NavBar() {
       <div style={{ top: "0rem" }} className="NavBar">
         <NavLink
           to="/"
-          exact="true"
+          exact
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -66,7 +62,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/sales"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -74,7 +69,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/new_house"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -82,7 +76,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/stories"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -90,7 +83,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/new_story"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -98,7 +90,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/customer_list"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -106,7 +97,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/add_employee"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -114,7 +104,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/employee_info"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -130,7 +119,7 @@ function NavBar() {
       <div style={{ top: "0rem" }} className="NavBar">
         <NavLink
           to="/"
-          exact="true"
+          exact
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -138,7 +127,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/sales"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -146,7 +134,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/stories"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
@@ -154,7 +141,6 @@ function NavBar() {
         </NavLink>
         <NavLink
           to="/customer_info"
-          exact="true"
           className="styleNavBar"
           activeStyle={{ color: "black" }}
         >
